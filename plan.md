@@ -21,7 +21,7 @@
 
 Built and verified by `pnpm run build` + `pnpm run lint`.
 
-- [x] **F0.1** Root layout + globals: Geist + Noto Sans Devanagari, cluster accent tokens, `overflow-x: hidden`, sticky header — [`app/layout.tsx`](app/layout.tsx), [`app/globals.css`](app/globals.css)
+- [x] **F0.1** Root layout + globals: Geist + Noto Sans Devanagari, cluster accent tokens, `overflow-x: hidden`, sticky header — [`app/layout.tsx`](app/layout.tsx), [`app/globals.css`](app/globals.css). Visual standards for UI work: [`DESIGN_PRINCIPLES.md`](DESIGN_PRINCIPLES.md).
 - [x] **F0.2** Cluster config + DISCOM seed list — [`app/_data/clusters.ts`](app/_data/clusters.ts), [`app/_data/discoms.ts`](app/_data/discoms.ts)
 - [x] **F0.3** Shared server components — [`Wordmark`](app/_components/Wordmark.tsx), [`SiteHeader`](app/_components/SiteHeader.tsx), [`SiteFooter`](app/_components/SiteFooter.tsx), [`Hero`](app/_components/Hero.tsx), [`ThreeUpCards`](app/_components/ThreeUpCards.tsx), [`HowItWorks`](app/_components/HowItWorks.tsx), [`ContentBody`](app/_components/ContentBody.tsx), [`DiscomGrid`](app/_components/DiscomGrid.tsx), [`FaqAccordion`](app/_components/FaqAccordion.tsx), [`TrustStrip`](app/_components/TrustStrip.tsx), [`JsonLd`](app/_components/JsonLd.tsx)
 - [x] **F0.4** Client components — [`BillExplainer`](app/_components/BillExplainer.tsx) (2 tabs, typeahead, capture, qualification, dynamic CTA), [`BeforeAfterSlider`](app/_components/BeforeAfterSlider.tsx), [`StickyMobileCTA`](app/_components/StickyMobileCTA.tsx), [`WhatsAppShareButton`](app/_components/WhatsAppShareButton.tsx), [`UseCaseStrip`](app/_components/UseCaseStrip.tsx)
