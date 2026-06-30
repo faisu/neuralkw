@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <defs>
+    <linearGradient id="brand-accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0B0F19" />
+    </linearGradient>
+  </defs>
+  <rect width="1584" height="396" fill="url(#bg-grad)" />
+  <g opacity="0.05">
+    <path d="M 0,99 L 1584,99 M 0,198 L 1584,198 M 0,297 L 1584,297" stroke="#FFFFFF" stroke-width="1" />
+    <path d="M 396,0 L 396,396 M 792,0 L 792,396 M 1188,0 L 1188,396" stroke="#FFFFFF" stroke-width="1" />
+  </g>
+  <image href="/brand/logo-icon.svg" x="120" y="98" width="200" height="200" />
+  <text x="360" y="200" font-family="'Plus Jakarta Sans', sans-serif" font-size="72" font-weight="800" fill="#FFFFFF" letter-spacing="-1px">
+    neural<tspan fill="url(#brand-accent-grad)">kw</tspan>
+  </text>
+  <text x="362" y="250" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="700" fill="#94A3B8" letter-spacing="4px">
+    AGENTIC BILL RECONCILIATION
+  </text>
+  <text x="362" y="310" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="500" fill="#94A3B8">
+    AI-native reconciliation for high-volume enterprise bills
+  </text>
+</svg>
