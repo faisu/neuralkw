@@ -1,33 +1,33 @@
 export const analyticsCopy = {
   hero: {
-    headline: "Reconciliation analytics that surface what spreadsheets hide",
+    headline: "Analytics that turn reconciliation into insight",
     subcopy:
-      "Track exception trends, vendor compliance, and spend drift across your entire bill portfolio — updated with every reconciliation run.",
+      "The analytics component surfaces consumption trends, infrastructure efficiency, payment performance, and GHG emissions — updated with every agent run. View dashboards in the portal or request reports via agent@neuralkw.com.",
   },
   metrics: [
     {
-      title: "Exception rate over time",
+      title: "Consumption analytics",
       description:
-        "Monitor how reconciliation quality improves as agreements are tuned and vendor issues are resolved.",
-      sample: "12.4% → 8.1% over 90 days",
+        "Track utilization patterns across sites and service types. Spot anomalies against baselines established during onboarding.",
+      sample: "12.4% variance flagged across 47 sites",
     },
     {
-      title: "Spend by vendor & category",
+      title: "Infrastructure optimization",
       description:
-        "Break down invoice volume and dollar amounts across utilities, telecom, facilities, SaaS, and custom categories.",
-      sample: "$4.2M across 847 vendors",
+        "Identify underused facilities, overlapping service contracts, and opportunities to consolidate spend.",
+      sample: "$840K in optimization opportunities",
     },
     {
-      title: "Agreement compliance score",
+      title: "Payment performance",
       description:
-        "A rolling score per vendor showing how consistently bills match contracted terms.",
-      sample: "Avg. 94.6% compliance",
+        "Monitor reconciliation throughput, exception rates, and cash flow timing across your vendor portfolio.",
+      sample: "89.2% auto-approved · median 3.8 hrs/batch",
     },
     {
-      title: "Time-to-reconcile SLA",
+      title: "Greenhouse gas (GHG) emissions",
       description:
-        "Track batch processing times and identify bottlenecks in your AP workflow.",
-      sample: "Median 3.8 hours per batch",
+        "Translate utility and facilities consumption into emissions metrics for sustainability reporting.",
+      sample: "Scope 1 & 2 tracking across 12 categories",
     },
   ],
   dashboardStats: [
@@ -36,4 +36,9 @@ export const analyticsCopy = {
     { label: "Auto-approved", value: "89.2%", change: "+5%" },
     { label: "Spend under review", value: "$342K", change: "-22%" },
   ],
+  access: {
+    title: "Portal dashboards or email reports",
+    description:
+      "Explore live analytics in the neuralkw portal, or email agent@neuralkw.com to request custom reports and scheduled digests.",
+  },
 };

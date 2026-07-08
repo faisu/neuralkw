@@ -4,17 +4,18 @@ import { CtaBanner } from "@/components/layout/CtaBanner";
 import { MockDashboard } from "@/components/marketing/MockDashboard";
 import { Card } from "@/components/ui/Card";
 import { analyticsCopy } from "@/content/copy/analytics";
-import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, siteConfig } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Analytics",
   description:
-    "Accounts payable analytics for enterprise bill reconciliation. Track exception rates, spend by vendor, agreement compliance scores, and time-to-reconcile SLAs.",
+    "Consumption analytics, infrastructure optimization, payment performance, and GHG emissions reporting. View in the portal or request via agent@neuralkw.com.",
   path: "/analytics",
   keywords: [
     "accounts payable analytics",
     "spend anomaly detection",
     "reconciliation reporting",
+    "GHG emissions reporting",
   ],
 });
 
@@ -39,6 +40,18 @@ export default function AnalyticsPage() {
             {analyticsCopy.hero.headline}
           </h1>
           <p className="mt-6 text-lg text-text-muted">{analyticsCopy.hero.subcopy}</p>
+          <p className="mt-4 text-sm text-text-muted">
+            <span aria-disabled="true" className="cursor-not-allowed text-text-muted/70">
+              Portal — coming soon
+            </span>
+            {" · "}
+            <a
+              href={`mailto:${siteConfig.agentEmail}`}
+              className="text-accent-cyan hover:underline"
+            >
+              {siteConfig.agentEmail}
+            </a>
+          </p>
         </div>
       </Section>
 
@@ -47,8 +60,8 @@ export default function AnalyticsPage() {
       </Section>
 
       <Section
-        eyebrow="Key metrics"
-        title="What finance leaders track"
+        eyebrow="Analytics component"
+        title="What finance and sustainability teams track"
         className="bg-bg-surface-deep/50"
       >
         <div className="grid gap-6 md:grid-cols-2">
@@ -62,9 +75,43 @@ export default function AnalyticsPage() {
         </div>
       </Section>
 
+      <Section
+        eyebrow="Access"
+        title={analyticsCopy.access.title}
+        description={analyticsCopy.access.description}
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <h3 className="font-semibold text-white">Portal dashboards</h3>
+            <p className="mt-2 text-sm text-text-muted">
+              Explore live consumption, payment, and emissions metrics in your workspace.
+            </p>
+            <span
+              aria-disabled="true"
+              className="mt-4 inline-block cursor-not-allowed text-sm font-medium text-text-muted"
+            >
+              Coming soon
+            </span>
+          </Card>
+          <Card>
+            <h3 className="font-semibold text-white">Email reports</h3>
+            <p className="mt-2 text-sm text-text-muted">
+              Request custom analytics digests and scheduled reports from the agent.
+            </p>
+            <a
+              href={`mailto:${siteConfig.agentEmail}`}
+              className="mt-4 inline-block font-mono text-sm text-accent-cyan hover:underline"
+            >
+              {siteConfig.agentEmail}
+            </a>
+          </Card>
+        </div>
+      </Section>
+
       <CtaBanner
-        headline="See your reconciliation data in one place"
-        subcopy="Sign up to connect your first bill batch and unlock analytics."
+        headline="See your analytics in the portal"
+        subcopy={`Email ${siteConfig.agentEmail} for agent-delivered reports — portal access is coming soon.`}
+        primaryLabel="Coming soon"
       />
     </main>
   );

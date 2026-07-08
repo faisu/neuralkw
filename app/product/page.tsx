@@ -6,13 +6,14 @@ import { productCopy } from "@/content/copy/product";
 import {
   breadcrumbJsonLd,
   createMetadata,
+  siteConfig,
   softwareApplicationJsonLd,
 } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Product",
   description:
-    "Automated bill reconciliation software that matches vendor invoices against prefilled agreements. AI agents detect rate mismatches, duplicates, and unauthorized charges.",
+    "AI agent for bill reconciliation with onboarding, operations, and analytics. Access via email at agent@neuralkw.com or the neuralkw portal.",
   path: "/product",
   keywords: [
     "automated bill reconciliation software",
@@ -45,19 +46,31 @@ export default function ProductPage() {
             {productCopy.hero.headline}
           </h1>
           <p className="mt-6 text-lg text-text-muted">{productCopy.hero.subcopy}</p>
+          <p className="mt-4 text-sm text-text-muted">
+            <span aria-disabled="true" className="cursor-not-allowed text-text-muted/70">
+              Portal — coming soon
+            </span>
+            {" · "}
+            <a
+              href={`mailto:${siteConfig.agentEmail}`}
+              className="text-accent-cyan hover:underline"
+            >
+              {siteConfig.agentEmail}
+            </a>
+          </p>
         </div>
       </Section>
 
-      {productCopy.features.map((feature, i) => (
+      {productCopy.agentComponents.map((component, i) => (
         <Section
-          key={feature.title}
-          eyebrow={`Feature ${i + 1}`}
-          title={feature.title}
-          description={feature.description}
+          key={component.title}
+          eyebrow={component.title}
+          title={component.title}
+          description={component.description}
           className={i % 2 === 1 ? "bg-bg-surface-deep/50" : ""}
         >
-          <ul className="grid gap-3 sm:grid-cols-3">
-            {feature.items.map((item) => (
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {component.items.map((item) => (
               <li
                 key={item}
                 className="flex items-start gap-2 rounded-xl bg-bg-surface px-4 py-3 text-sm text-text-muted"
@@ -71,8 +84,42 @@ export default function ProductPage() {
       ))}
 
       <Section
+        eyebrow="Access"
+        title={productCopy.access.title}
+        description={productCopy.access.description}
+      >
+        <div className="grid gap-6 md:grid-cols-2">
+          <Card>
+            <h3 className="font-semibold text-white">Email the agent</h3>
+            <p className="mt-2 text-sm text-text-muted">
+              Send bills and onboarding materials to the shared agent inbox.
+            </p>
+            <a
+              href={`mailto:${siteConfig.agentEmail}`}
+              className="mt-4 inline-block font-mono text-sm text-accent-cyan hover:underline"
+            >
+              {siteConfig.agentEmail}
+            </a>
+          </Card>
+          <Card>
+            <h3 className="font-semibold text-white">Use the portal</h3>
+            <p className="mt-2 text-sm text-text-muted">
+              Manage onboarding, operations, and analytics in one workspace.
+            </p>
+            <span
+              aria-disabled="true"
+              className="mt-4 inline-block cursor-not-allowed text-sm font-medium text-text-muted"
+            >
+              Coming soon
+            </span>
+          </Card>
+        </div>
+      </Section>
+
+      <Section
         eyebrow="Workflow outputs"
         title="Every bill gets a clear disposition"
+        className="bg-bg-surface-deep/50"
       >
         <div className="grid gap-6 md:grid-cols-3">
           {productCopy.outputs.map((output) => (
@@ -95,8 +142,9 @@ export default function ProductPage() {
       </Section>
 
       <CtaBanner
-        headline="Start reconciling with agreement context"
-        subcopy="Self-serve signup — upload your first agreement and bill batch today."
+        headline="Access the agent by email or portal"
+        subcopy={`Email ${siteConfig.agentEmail} to start onboarding your first site and agreement — portal access is coming soon.`}
+        primaryLabel="Coming soon"
       />
     </main>
   );

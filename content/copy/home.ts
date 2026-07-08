@@ -1,10 +1,11 @@
 export const homeCopy = {
   hero: {
-    headline: "Reconcile every bill against the agreement that governs it",
+    headline: "Your reconciliation agent — by email or portal",
     subcopy:
-      "neuralkw is an AI-orchestrated reconciliation platform for enterprises drowning in vendor bills. Upload your agreements once — the agent matches every invoice, flags exceptions, and surfaces spend analytics.",
-    primaryCta: "Start free",
+      "neuralkw is an AI-orchestrated platform for enterprise vendor bills. Onboard sites and agreements, run bill operations end to end, and surface analytics — all through the same agent via email or the neuralkw portal.",
+    primaryCta: "Coming soon",
     secondaryCta: "See how it works",
+    secondaryHref: "/product",
   },
   problems: [
     {
@@ -23,26 +24,46 @@ export const homeCopy = {
         "Without agreement-aware validation, vendor overbilling compounds quietly — until the audit finds it.",
     },
   ],
-  steps: [
+  agentComponents: [
     {
-      step: "01",
-      title: "Upload agreements",
+      title: "Onboarding",
       description:
-        "Prefill rate schedules, SLAs, and contract terms. neuralkw builds the context your bills will be validated against.",
+        "The agent builds the context every bill run depends on — infrastructure, services, agreements, and consumption baselines.",
+      items: [
+        "Infrastructure listing (sites, locations, and facilities)",
+        "Service type cataloguing",
+        "Agreement and rate schedule listings",
+        "Consumption and utilization baselines",
+      ],
     },
     {
-      step: "02",
-      title: "Ingest bills",
+      title: "Operations",
       description:
-        "Connect your AP inbox or upload invoices in bulk. The platform handles high-density bill streams at enterprise scale.",
+        "From bill discovery through payment, the agent orchestrates the full AP workflow with agreement-aware reconciliation.",
+      items: [
+        "Bill discovery",
+        "Bill digitization",
+        "Cash flow planning",
+        "Payment and reconciliations",
+      ],
     },
     {
-      step: "03",
-      title: "Agent reconciles",
+      title: "Analytics",
       description:
-        "The AI agent matches each line item to agreement terms, routes exceptions, and logs every decision with a full audit trail.",
+        "Turn reconciliation data into actionable insight — consumption trends, infrastructure efficiency, and emissions reporting.",
+      items: [
+        "Consumption analytics",
+        "Infrastructure optimization",
+        "Payment performance",
+        "Greenhouse gas (GHG) emissions",
+      ],
     },
   ],
+  access: {
+    title: "Email or portal — same agent",
+    description:
+      "Forward bills and documents to the agent inbox, or upload and review in the neuralkw portal. Both channels feed the same onboarding, operations, and analytics pipeline.",
+  },
   analyticsTeaser: [
     { label: "Exception rate", value: "↓ 34%", detail: "vs. manual baseline" },
     { label: "Time to reconcile", value: "4.2 hrs", detail: "avg. per batch" },
@@ -55,7 +76,9 @@ export const homeCopy = {
     { title: "SOC 2 roadmap", description: "Security program in active development" },
   ],
   finalCta: {
-    headline: "Ready to automate bill reconciliation?",
-    subcopy: "Self-serve signup — start reconciling your first batch today.",
+    headline: "Reach the agent by email or portal",
+    subcopy:
+      "Email agent@neuralkw.com to kick off onboarding — portal access is coming soon.",
+    primaryLabel: "Coming soon",
   },
 };

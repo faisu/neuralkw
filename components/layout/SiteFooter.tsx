@@ -16,6 +16,18 @@ export function SiteFooter() {
             <p className="mt-2 text-xs font-bold uppercase tracking-[0.25em] text-text-muted">
               {siteConfig.tagline}
             </p>
+            <p className="mt-4 text-sm text-text-muted">
+              <a
+                href={`mailto:${siteConfig.agentEmail}`}
+                className="transition-colors hover:text-white"
+              >
+                {siteConfig.agentEmail}
+              </a>
+              <span className="mx-2">·</span>
+              <span aria-disabled="true" className="cursor-not-allowed text-text-muted/70">
+                Portal — coming soon
+              </span>
+            </p>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-white">Product</h3>

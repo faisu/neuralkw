@@ -1,43 +1,49 @@
 export const productCopy = {
   hero: {
-    headline: "Agreement-aware reconciliation, powered by AI agents",
+    headline: "Three agent components — one reconciliation pipeline",
     subcopy:
-      "Generic OCR tools extract data. neuralkw understands your contracts — matching every bill line against the terms that govern it.",
+      "Onboarding, operations, and analytics work together under a single agent. Access it by email at agent@neuralkw.com or through the neuralkw portal — same context, same audit trail, either channel.",
   },
-  features: [
+  agentComponents: [
     {
-      title: "Agreement context engine",
+      title: "Onboarding",
       description:
-        "Structured ingestion of rate schedules, volume tiers, SLAs, and renewal terms. Your agreements become the source of truth for every reconciliation run.",
+        "Before the first bill is matched, the agent catalogs your infrastructure, services, agreements, and consumption baselines.",
       items: [
-        "Rate schedule parsing",
-        "Multi-vendor contract mapping",
-        "Term versioning and effective dates",
+        "Infrastructure listing (sites, locations, and facilities)",
+        "Service type cataloguing",
+        "Agreement and rate schedule listings",
+        "Consumption and utilization baselines",
       ],
     },
     {
-      title: "Agent reconciliation loop",
+      title: "Operations",
       description:
-        "An AI agent orchestrates the full workflow — not a static rules engine. It reasons over bill context, agreement terms, and historical patterns.",
+        "The agent runs the full bill lifecycle — discovery, digitization, cash flow planning, and payment reconciliation against your agreements.",
       items: [
-        "Ingest → match → reason → escalate",
-        "Confidence-scored decisions",
-        "Human-in-the-loop for edge cases",
+        "Bill discovery",
+        "Bill digitization",
+        "Cash flow planning",
+        "Payment and reconciliations",
       ],
     },
     {
-      title: "Exception handling",
+      title: "Analytics",
       description:
-        "Every discrepancy is classified, prioritized, and routed. Your team reviews only what matters.",
+        "Every operations run feeds analytics — consumption trends, infrastructure efficiency, payment performance, and emissions reporting.",
       items: [
-        "Rate mismatch",
-        "Quantity variance",
-        "Billing period errors",
-        "Duplicate charges",
-        "Unauthorized line items",
+        "Consumption analytics",
+        "Infrastructure optimization",
+        "Payment performance",
+        "Greenhouse gas (GHG) emissions",
       ],
     },
   ],
+  access: {
+    title: "Work via email or portal",
+    description:
+      "Send bills and onboarding documents to agent@neuralkw.com, or manage the full workflow in the portal. The agent maintains shared state across both channels.",
+  },
   outputs: [
     { status: "Approved", color: "emerald", description: "Bill matches agreement terms" },
     { status: "Disputed", color: "cyan", description: "Exception flagged for vendor follow-up" },

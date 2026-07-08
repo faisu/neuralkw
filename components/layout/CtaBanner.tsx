@@ -5,13 +5,17 @@ type CtaBannerProps = {
   subcopy?: string;
   primaryLabel?: string;
   primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
 };
 
 export function CtaBanner({
   headline,
   subcopy,
-  primaryLabel = "Start free",
-  primaryHref = "/signup",
+  primaryLabel = "Coming soon",
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
 }: CtaBannerProps) {
   return (
     <section className="py-20">
@@ -25,12 +29,39 @@ export function CtaBanner({
               {subcopy}
             </p>
           )}
-          <Link
-            href={primaryHref}
-            className="btn-primary mt-8 inline-block rounded-lg px-8 py-3 text-base"
-          >
-            {primaryLabel}
-          </Link>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            {primaryHref ? (
+              <Link
+                href={primaryHref}
+                className="btn-primary inline-block rounded-lg px-8 py-3 text-base"
+              >
+                {primaryLabel}
+              </Link>
+            ) : (
+              <span
+                aria-disabled="true"
+                className="btn-primary inline-block cursor-not-allowed rounded-lg px-8 py-3 text-base opacity-60"
+              >
+                {primaryLabel}
+              </span>
+            )}
+            {secondaryLabel &&
+              (secondaryHref ? (
+                <Link
+                  href={secondaryHref}
+                  className="btn-secondary inline-block rounded-lg px-8 py-3 text-base"
+                >
+                  {secondaryLabel}
+                </Link>
+              ) : (
+                <span
+                  aria-disabled="true"
+                  className="btn-secondary inline-block cursor-not-allowed rounded-lg px-8 py-3 text-base opacity-60"
+                >
+                  {secondaryLabel}
+                </span>
+              ))}
+          </div>
         </div>
       </div>
     </section>

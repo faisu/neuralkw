@@ -19,12 +19,12 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <Link
-            href="/signup"
-            className="btn-primary rounded-lg px-4 py-2 text-sm"
+          <span
+            aria-disabled="true"
+            className="btn-primary inline-block cursor-not-allowed rounded-lg px-4 py-2 text-sm opacity-60"
           >
-            Start free
-          </Link>
+            Coming soon
+          </span>
         </div>
       </div>
     </header>

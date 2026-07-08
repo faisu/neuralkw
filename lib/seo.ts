@@ -5,8 +5,9 @@ export const siteConfig = {
   tagline: "Agentic Bill Reconciliation",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://neuralkw.com",
   description:
-    "AI-native bill reconciliation for enterprises. Match high-volume vendor bills against prefilled agreements, detect exceptions, and analyze spend.",
+    "AI-native bill reconciliation for enterprises. Work with the agent via email or portal — onboarding, operations, and analytics in one pipeline.",
   contactEmail: "privacy@neuralkw.com",
+  agentEmail: "agent@neuralkw.com",
 };
 
 type PageMeta = {
@@ -88,7 +89,7 @@ export function softwareApplicationJsonLd() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "Self-serve signup available",
+      description: "Contact the team to get started",
     },
   };
 }

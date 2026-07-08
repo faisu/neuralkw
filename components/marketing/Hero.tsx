@@ -2,6 +2,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { homeCopy } from "@/content/copy/home";
+import { siteConfig } from "@/lib/seo";
 
 export function Hero() {
   const { hero } = homeCopy;
@@ -19,11 +20,20 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-text-muted">{hero.subcopy}</p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button href="/signup">{hero.primaryCta}</Button>
-            <Button href="/product" variant="secondary">
+            <Button disabled>{hero.primaryCta}</Button>
+            <Button href={hero.secondaryHref} variant="secondary">
               {hero.secondaryCta}
             </Button>
           </div>
+          <p className="mt-6 text-sm text-text-muted">
+            Or email{" "}
+            <a
+              href={`mailto:${siteConfig.agentEmail}`}
+              className="text-accent-cyan hover:underline"
+            >
+              {siteConfig.agentEmail}
+            </a>
+          </p>
         </div>
       </div>
     </section>
