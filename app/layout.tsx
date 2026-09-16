@@ -3,6 +3,7 @@ import { Instrument_Sans, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SiteCursor } from "@/components/ui/SiteCursor";
 import {
   createMetadata,
   homeTitle,
@@ -61,6 +62,7 @@ export default function RootLayout({
           <style>{`.reveal{opacity:1;transform:none}`}</style>
         </noscript>
         <JsonLd data={siteJsonLd()} />
+        <SiteCursor />
         <SiteHeader />
         <div className="page-rail mx-auto w-full max-w-[1360px] flex-1">{children}</div>
         <SiteFooter />
