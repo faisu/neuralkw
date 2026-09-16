@@ -6,6 +6,7 @@ import { UseCases } from "@/components/marketing/UseCases";
 import { Showcase } from "@/components/marketing/Showcase";
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Section } from "@/components/layout/Section";
+import { Reveal } from "@/components/ui/Reveal";
 import { homeCopy } from "@/content/copy/home";
 
 export default function HomePage() {
@@ -36,7 +37,9 @@ export default function HomePage() {
         description={homeCopy.waitlist.description}
         className="border-t border-border-subtle"
       >
-        <WaitlistForm />
+        <Reveal>
+          <WaitlistForm />
+        </Reveal>
       </Section>
     </main>
   );

@@ -81,7 +81,9 @@ export function CapabilityStory() {
           </ul>
         </div>
         <div>
-          <WorkspaceMock kind={item.visual as VisualKind} />
+          <div key={`${mode.id}-${item.title}`} className="visual-swap">
+            <WorkspaceMock kind={item.visual as VisualKind} />
+          </div>
           <p className={`mt-4 text-sm ${inverted ? "text-white/55" : "text-text-muted"}`}>
             {item.description}
           </p>

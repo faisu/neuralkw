@@ -15,7 +15,7 @@ export function Showcase() {
           <h3 className="mt-3 text-2xl font-normal tracking-[-0.03em] text-text-primary">
             {fromTitle}
           </h3>
-          <div className="mt-6 overflow-hidden rounded-lg bg-[#e8edf2]" aria-hidden="true">
+          <div className="creative-tile mt-6 overflow-hidden rounded-lg bg-[#e8edf2]" aria-hidden="true">
             <FloorPlanMock className="max-h-64" />
           </div>
         </article>
@@ -28,7 +28,7 @@ export function Showcase() {
               <h3 className="mt-2 text-lg font-medium tracking-[-0.02em] text-text-primary">
                 {output.title}
               </h3>
-              <div className="mt-4 overflow-hidden rounded-lg bg-[#e8edf2]" aria-hidden="true">
+              <div className="creative-tile mt-4 overflow-hidden rounded-lg bg-[#e8edf2]" aria-hidden="true">
                 <VisualMock kind={output.visual} className="max-h-32" />
               </div>
             </article>

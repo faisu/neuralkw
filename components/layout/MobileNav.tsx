@@ -59,7 +59,7 @@ export function MobileNav() {
       {open ? (
         <div
           id={panelId}
-          className="absolute inset-x-0 top-14 z-50 border-b border-border-subtle bg-bg-primary px-6 py-6"
+          className="mobile-panel absolute inset-x-0 top-14 z-50 border-b border-border-subtle bg-bg-primary px-6 py-6"
         >
           <nav aria-label="Mobile">
             <ul className="flex flex-col">

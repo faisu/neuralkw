@@ -8,11 +8,12 @@ export function Manifesto() {
     <section className="border-y border-border-subtle">
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-2 lg:gap-20">
         <Reveal>
+          <div className="manifesto-rule mb-8 h-px w-24 bg-bg-ink" />
           <p className="max-w-md text-[17px] leading-relaxed text-text-muted">
             {manifesto.statement}
           </p>
         </Reveal>
-        <Reveal>
+        <Reveal delay={120}>
           <h2 className="text-3xl font-normal tracking-[-0.045em] text-text-primary md:text-[2.6rem] md:leading-[1.15]">
             {manifesto.headlineLead}{" "}
             <span className="text-text-faint">{manifesto.headlineMuted}</span>{" "}
