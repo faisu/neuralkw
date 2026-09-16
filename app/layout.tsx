@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import { Instrument_Sans, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import {
@@ -10,10 +10,10 @@ import {
 } from "@/lib/seo";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     path: "/",
     keywords: [
-      "agreement-based bill validation",
-      "enterprise invoice automation",
+      "2D floor plan to 3D model",
+      "property marketing assets",
     ],
   }),
 };
@@ -44,15 +44,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${instrument.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
+      <body className="site-hatch flex min-h-full flex-col bg-bg-primary text-text-primary">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <SiteHeader />
-        <div className="flex-1">{children}</div>
+        <div className="page-rail mx-auto w-full max-w-[1360px] flex-1">{children}</div>
         <SiteFooter />
       </body>
     </html>

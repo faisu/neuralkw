@@ -20,8 +20,8 @@ export function CtaBanner({
   return (
     <section className="py-20">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="gradient-border rounded-2xl bg-bg-surface px-8 py-16 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <div className="border-t border-border-subtle px-2 py-16 text-left md:text-center">
+          <h2 className="text-3xl font-normal tracking-[-0.04em] text-text-primary md:text-4xl">
             {headline}
           </h2>
           {subcopy && (

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const siteConfig = {
   name: "neuralkw",
-  tagline: "Agentic Bill Reconciliation",
+  tagline: "Transform 2D Layouts Into 3D Experiences",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://neuralkw.com",
   description:
-    "AI-native bill reconciliation for enterprises. Work with the agent via email or portal — onboarding, operations, and analytics in one pipeline.",
+    "Transform 2D property layouts into 3D models, videos, interactive websites, and marketing pamphlets from one platform.",
   contactEmail: "privacy@neuralkw.com",
   agentEmail: "agent@neuralkw.com",
 };
@@ -32,9 +32,10 @@ export function createMetadata({
     title: fullTitle,
     description,
     keywords: [
-      "AI bill reconciliation",
-      "enterprise invoice automation",
-      "agentic bill processing",
+      "2D to 3D property visualization",
+      "real estate marketing platform",
+      "3D property model",
+      "property walkthrough video",
       ...keywords,
     ],
     alternates: {
@@ -89,7 +90,7 @@ export function softwareApplicationJsonLd() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "Contact the team to get started",
+      description: "Join the waitlist for early access",
     },
   };
 }

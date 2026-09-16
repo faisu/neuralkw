@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonProps = {
   href?: string;
@@ -8,7 +8,9 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit";
   disabled?: boolean;
-};
+  busy?: boolean;
+  onClick?: () => void;
+} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, "aria-label">;
 
 export function Button({
   href,
@@ -17,16 +19,17 @@ export function Button({
   className = "",
   type = "button",
   disabled,
+  busy,
+  onClick,
+  ...rest
 }: ButtonProps) {
-  const base = "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-opacity";
-  const styles =
-    variant === "primary"
-      ? "btn-primary"
-      : "btn-secondary";
+  const base =
+    "inline-flex min-h-11 items-center justify-center rounded-[4px] px-5 py-2.5 text-sm font-medium transition-opacity focus-visible:outline-none";
+  const styles = variant === "primary" ? "btn-primary" : "btn-secondary";
 
   if (href) {
     return (
-      <Link href={href} className={`${base} ${styles} ${className}`}>
+      <Link href={href} onClick={onClick} className={`${base} ${styles} ${className}`}>
         {children}
       </Link>
     );
@@ -35,8 +38,11 @@ export function Button({
   return (
     <button
       type={type}
-      disabled={disabled}
-      className={`${base} ${styles} ${className} disabled:opacity-50`}
+      disabled={disabled || busy}
+      aria-busy={busy || undefined}
+      onClick={onClick}
+      className={`${base} ${styles} ${className} disabled:pointer-events-none disabled:opacity-50`}
+      {...rest}
     >
       {children}
     </button>

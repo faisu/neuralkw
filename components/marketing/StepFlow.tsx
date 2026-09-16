@@ -10,7 +10,7 @@ export function StepFlow({ steps }: StepFlowProps) {
           <span className="font-mono text-4xl font-bold text-accent-cyan/30">
             {item.step}
           </span>
-          <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
+          <h3 className="mt-4 text-xl font-medium text-text-primary">{item.title}</h3>
           <p className="mt-3 text-sm leading-relaxed text-text-muted">
             {item.description}
           </p>

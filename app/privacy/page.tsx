@@ -5,7 +5,7 @@ import { createMetadata, siteConfig } from "@/lib/seo";
 export const metadata: Metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "neuralkw privacy policy. Learn how we process bills, agreements, and analytics data for enterprise reconciliation.",
+    "neuralkw privacy policy. Learn how we collect and use waitlist and contact information for our property visualization platform.",
   path: "/privacy",
 });
 
@@ -13,63 +13,64 @@ export default function PrivacyPage() {
   return (
     <main>
       <Section className="pt-28">
-        <article className="prose prose-invert max-w-3xl">
-          <h1 className="text-4xl font-bold text-white">Privacy Policy</h1>
-          <p className="mt-4 text-text-muted">Last updated: June 30, 2026</p>
+        <article className="max-w-3xl">
+          <h1 className="text-4xl font-normal tracking-[-0.04em] text-text-primary">Privacy Policy</h1>
+          <p className="mt-4 text-text-muted">Last updated: September 16, 2026</p>
 
           <div className="mt-8 space-y-6 text-text-muted">
             <section>
-              <h2 className="text-xl font-semibold text-white">Overview</h2>
+              <h2 className="text-xl font-medium text-text-primary">Overview</h2>
               <p className="mt-2">
-                neuralkw (&quot;we&quot;, &quot;us&quot;) provides an AI-orchestrated bill
-                reconciliation platform for enterprise customers. This policy describes how we
-                collect, use, and protect information when you use our services.
+                neuralkw (&quot;we&quot;, &quot;us&quot;) is building a platform that turns 2D
+                property layouts into 3D models and marketing assets. This policy describes how we
+                collect, use, and protect information when you visit our website or join the
+                waitlist.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">Data we process</h2>
+              <h2 className="text-xl font-medium text-text-primary">Data we process</h2>
               <ul className="mt-2 list-disc space-y-1 pl-6">
-                <li>Account information (name, email, organization)</li>
-                <li>Vendor bills and invoices uploaded to the platform</li>
-                <li>Agreement and contract data used for reconciliation context</li>
-                <li>Reconciliation results, exception logs, and analytics derived from processing</li>
-                <li>Usage data and audit logs for security and service improvement</li>
+                <li>Waitlist details you submit (name, work email, and optional company name)</li>
+                <li>Messages you send us via email</li>
+                <li>Basic usage data needed to operate and improve the website</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">AI processing</h2>
+              <h2 className="text-xl font-medium text-text-primary">How we use information</h2>
               <p className="mt-2">
-                Bills and agreement data are processed by AI agents to perform reconciliation,
-                detect exceptions, and generate analytics. Processing occurs within our
-                infrastructure or approved subprocessors under contractual safeguards.
+                We use waitlist information to confirm your registration, share launch updates and
+                early access, and understand demand for the platform. We do not sell your personal
+                information.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">Data retention</h2>
+              <h2 className="text-xl font-medium text-text-primary">Data retention</h2>
               <p className="mt-2">
-                We retain data for the duration of your account and as required by law or
-                contractual obligations. You may request deletion of your data by contacting us.
+                We retain waitlist data until you ask us to remove it, or until it is no longer
+                needed for launch communications. You may request deletion of your data by
+                contacting us.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">Subprocessors</h2>
+              <h2 className="text-xl font-medium text-text-primary">Subprocessors</h2>
               <p className="mt-2">
-                We use third-party infrastructure providers for hosting, authentication, and AI
-                inference. A current list of subprocessors is available upon request.
+                We use third-party infrastructure providers for hosting and data storage. A current
+                list of subprocessors is available upon request.
               </p>
             </section>
 
             <section>
-              <h2 className="text-xl font-semibold text-white">Contact</h2>
+              <h2 className="text-xl font-medium text-text-primary">Contact</h2>
               <p className="mt-2">
                 For privacy inquiries, contact{" "}
-                <a href={`mailto:${siteConfig.contactEmail}`} className="text-accent-cyan hover:underline">
+                <a href={`mailto:${siteConfig.contactEmail}`} className="underline decoration-black/20 underline-offset-4 hover:decoration-black">
                   {siteConfig.contactEmail}
-                </a>.
+                </a>
+                .
               </p>
             </section>
           </div>

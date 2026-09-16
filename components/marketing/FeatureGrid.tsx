@@ -9,7 +9,7 @@ export function FeatureGrid({ items }: FeatureGridProps) {
     <div className="grid gap-6 md:grid-cols-3">
       {items.map((item) => (
         <Card key={item.title}>
-          <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+          <h3 className="text-lg font-medium text-text-primary">{item.title}</h3>
           <p className="mt-3 text-sm leading-relaxed text-text-muted">
             {item.description}
           </p>

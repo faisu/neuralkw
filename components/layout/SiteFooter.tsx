@@ -5,38 +5,28 @@ import { siteConfig } from "@/lib/seo";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border-subtle/30 bg-bg-surface-deep">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Logo variant="header" />
-            <p className="mt-4 max-w-sm text-sm text-text-muted">
+    <footer className="border-t border-white/10 bg-bg-ink text-[#f8f9fb]">
+      <div className="mx-auto max-w-[1360px] px-6 py-16 md:px-10">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <Logo variant="header" className="text-[#f8f9fb]" />
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-white/55">
               {siteConfig.description}
             </p>
-            <p className="mt-2 text-xs font-bold uppercase tracking-[0.25em] text-text-muted">
-              {siteConfig.tagline}
-            </p>
-            <p className="mt-4 text-sm text-text-muted">
-              <a
-                href={`mailto:${siteConfig.agentEmail}`}
-                className="transition-colors hover:text-white"
-              >
+            <p className="mt-6 text-sm text-white/55">
+              <a href={`mailto:${siteConfig.agentEmail}`} className="hover:text-white">
                 {siteConfig.agentEmail}
               </a>
-              <span className="mx-2">·</span>
-              <span aria-disabled="true" className="cursor-not-allowed text-text-muted/70">
-                Portal — coming soon
-              </span>
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white">Product</h3>
-            <ul className="mt-4 space-y-2">
+            <h2 className="text-sm font-medium text-white">Product</h2>
+            <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
               {footerLinks.product.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-text-muted transition-colors hover:text-white"
+                    className="block py-3 text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -45,13 +35,13 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white">Legal</h3>
-            <ul className="mt-4 space-y-2">
+            <h2 className="text-sm font-medium text-white">Legal</h2>
+            <ul className="mt-4 divide-y divide-white/10 border-y border-white/10">
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-text-muted transition-colors hover:text-white"
+                    className="block py-3 text-sm text-white/70 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +50,7 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 border-t border-border-subtle/20 pt-8 text-center text-sm text-text-muted">
+        <div className="mt-16 text-sm text-white/40">
           © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
         </div>
       </div>
