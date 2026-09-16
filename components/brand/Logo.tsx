@@ -53,7 +53,7 @@ export function Logo({ variant = "header", className = "", priority }: LogoProps
   }
 
   return (
-    <Link href="/" className={`flex items-center gap-2 ${className}`}>
+    <Link href="/" aria-label="neuralkw home" className={`flex items-center gap-2 ${className}`}>
       <Mark />
       <span className="text-[17px] font-medium tracking-[-0.03em]">neuralkw</span>
     </Link>

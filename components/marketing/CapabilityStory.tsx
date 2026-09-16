@@ -21,9 +21,9 @@ export function CapabilityStory() {
     >
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
         <div>
-          <p className={`text-[15px] ${inverted ? "text-white/40" : "text-text-faint"}`}>
+          <h2 className={`text-[15px] font-normal ${inverted ? "text-white/40" : "text-text-faint"}`}>
             {capabilities.heading}
-          </p>
+          </h2>
           <div className="mt-10 flex flex-wrap gap-2" role="tablist" aria-label="Workflow">
             {capabilities.modes.map((entry, index) => {
               const selected = index === modeIndex;

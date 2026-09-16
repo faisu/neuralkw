@@ -20,16 +20,21 @@ export default function Image() {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div
-            style={{
-              width: 22,
-              height: 22,
-              border: "1.5px solid #08090B",
-              display: "flex",
-            }}
-          />
-          <span style={{ fontSize: 28, color: "#08090B", letterSpacing: -0.6 }}>neuralkw</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <svg width="28" height="28" viewBox="0 0 22 22" fill="none">
+            <rect
+              x="2.5"
+              y="2.5"
+              width="17"
+              height="17"
+              stroke="#08090B"
+              strokeWidth="1.5"
+            />
+            <path d="M2.5 12.5h17M9.5 2.5v17" stroke="#08090B" strokeWidth="1.3" />
+          </svg>
+          <span style={{ fontSize: 28, color: "#08090B", letterSpacing: -0.6 }}>
+            {siteConfig.name}
+          </span>
         </div>
         <div
           style={{
@@ -39,7 +44,7 @@ export default function Image() {
             color: "#08090B",
             letterSpacing: -2,
             fontWeight: 400,
-            maxWidth: 900,
+            maxWidth: 920,
           }}
         >
           From floor plan to a living 3D story.

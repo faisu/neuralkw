@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { JsonLd } from "@/components/seo/JsonLd";
 import {
   createMetadata,
-  organizationJsonLd,
-  websiteJsonLd,
+  homeTitle,
   siteConfig,
+  siteJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -21,17 +22,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const homeMetadata = createMetadata({
+  title: siteConfig.tagline,
+  description: siteConfig.description,
+  path: "/",
+  keywords: [
+    "property visualization platform",
+    "real estate 3D walkthrough",
+  ],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  ...createMetadata({
-    title: "Home",
-    description: siteConfig.description,
-    path: "/",
-    keywords: [
-      "2D floor plan to 3D model",
-      "property marketing assets",
-    ],
-  }),
+  ...homeMetadata,
+  title: {
+    default: homeTitle,
+    template: `%s | ${siteConfig.name}`,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#F8F9FB",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -39,18 +51,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = [organizationJsonLd(), websiteJsonLd()];
-
   return (
     <html
       lang="en"
       className={`${instrument.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="site-hatch flex min-h-full flex-col bg-bg-primary text-text-primary">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <noscript>
+          <style>{`.reveal{opacity:1;transform:none}`}</style>
+        </noscript>
+        <JsonLd data={siteJsonLd()} />
         <SiteHeader />
         <div className="page-rail mx-auto w-full max-w-[1360px] flex-1">{children}</div>
         <SiteFooter />

@@ -7,14 +7,28 @@ import { Showcase } from "@/components/marketing/Showcase";
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { homeCopy } from "@/content/copy/home";
+import { homeTitle, siteConfig, webPageJsonLd } from "@/lib/seo";
 
 export default function HomePage() {
   return (
     <main>
+      <JsonLd
+        data={webPageJsonLd({
+          name: homeTitle,
+          description: siteConfig.description,
+          path: "/",
+        })}
+      />
       <Hero />
 
-      <Section id="product" className="border-t border-border-subtle pt-10 md:pt-12">
+      <Section
+        id="product"
+        title={homeCopy.product.heading}
+        description={homeCopy.product.subheading}
+        className="border-t border-border-subtle pt-10 md:pt-12"
+      >
         <ProductWorkflow />
       </Section>
 

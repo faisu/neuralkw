@@ -1,17 +1,39 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/layout/Section";
-import { createMetadata, siteConfig } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbJsonLd,
+  brandedTitle,
+  createMetadata,
+  siteConfig,
+  webPageJsonLd,
+} from "@/lib/seo";
+
+const description =
+  "neuralkw terms of service. Terms governing use of our website and waitlist for the property visualization platform.";
 
 export const metadata: Metadata = createMetadata({
   title: "Terms of Service",
-  description:
-    "neuralkw terms of service. Terms governing use of our website and waitlist for the property visualization platform.",
+  description,
   path: "/terms",
 });
 
 export default function TermsPage() {
   return (
     <main>
+      <JsonLd
+        data={webPageJsonLd({
+          name: brandedTitle("Terms of Service"),
+          description,
+          path: "/terms",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Terms of Service", path: "/terms" },
+        ])}
+      />
       <Section className="pt-28">
         <article className="max-w-3xl">
           <h1 className="text-4xl font-normal tracking-[-0.04em] text-text-primary">Terms of Service</h1>

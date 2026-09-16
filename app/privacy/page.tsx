@@ -1,17 +1,39 @@
 import type { Metadata } from "next";
 import { Section } from "@/components/layout/Section";
-import { createMetadata, siteConfig } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbJsonLd,
+  brandedTitle,
+  createMetadata,
+  siteConfig,
+  webPageJsonLd,
+} from "@/lib/seo";
+
+const description =
+  "neuralkw privacy policy. Learn how we collect and use waitlist and contact information for our property visualization platform.";
 
 export const metadata: Metadata = createMetadata({
   title: "Privacy Policy",
-  description:
-    "neuralkw privacy policy. Learn how we collect and use waitlist and contact information for our property visualization platform.",
+  description,
   path: "/privacy",
 });
 
 export default function PrivacyPage() {
   return (
     <main>
+      <JsonLd
+        data={webPageJsonLd({
+          name: brandedTitle("Privacy Policy"),
+          description,
+          path: "/privacy",
+        })}
+      />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Privacy Policy", path: "/privacy" },
+        ])}
+      />
       <Section className="pt-28">
         <article className="max-w-3xl">
           <h1 className="text-4xl font-normal tracking-[-0.04em] text-text-primary">Privacy Policy</h1>
