@@ -1,3 +1,8 @@
+"use client";
+
+import { LoopVideo } from "@/components/marketing/LoopVideo";
+import { homeCopy } from "@/content/copy/home";
+
 type MockProps = {
   className?: string;
 };
@@ -45,20 +50,20 @@ export function Building3DMock({ className = "" }: MockProps) {
 }
 
 export function VideoMock({ className = "" }: MockProps) {
+  const clip = homeCopy.film.clips.find((item) => item.kind === "video" && item.id === "living");
+
+  if (!clip || clip.kind !== "video") return null;
+
   return (
-    <svg
-      viewBox="0 0 180 132"
-      className={`block w-full ${className}`}
-      aria-hidden="true"
-    >
-      <rect x="10" y="14" width="160" height="90" rx="4" fill="#e8edf2" stroke="#08090b" strokeOpacity="0.16" />
-      <polygon points="90,28 148,54 90,80 32,54" fill="#dfe7ee" />
-      <polygon points="32,54 90,80 90,96 32,70" fill="#f4f6f8" />
-      <polygon points="90,80 148,54 148,70 90,96" fill="#c9d3dc" />
-      <polygon points="78,48 108,60 78,72" fill="#08090b" fillOpacity="0.78" />
-      <rect x="18" y="112" width="144" height="5" rx="2" fill="#d9dee4" />
-      <rect x="18" y="112" width="64" height="5" rx="2" fill="#08090b" fillOpacity="0.55" className="playhead" />
-    </svg>
+    <div className={`relative aspect-video overflow-hidden bg-[#111318] ${className}`}>
+      <LoopVideo
+        src={clip.src}
+        poster={clip.poster}
+        label={clip.label}
+        decorative
+        className="absolute inset-0"
+      />
+    </div>
   );
 }
 
@@ -135,6 +140,8 @@ export function VisualMock({ kind, className = "" }: { kind: VisualKind; classNa
 }
 
 export function WorkspaceMock({ kind = "plan" }: { kind?: VisualKind }) {
+  const video = kind === "video";
+
   return (
     <div className="overflow-hidden rounded-lg border border-border-subtle bg-[#e8edf2] shadow-[0_24px_60px_rgba(8,9,11,0.08)]">
       <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] bg-[#f8f9fb]">
@@ -148,9 +155,11 @@ export function WorkspaceMock({ kind = "plan" }: { kind?: VisualKind }) {
             <div className="h-1.5 w-9 rounded-full bg-black/10" />
           </div>
         </aside>
-        <div className="relative bg-[#eef2f6] p-4">
-          <div className="hero-scene-grid pointer-events-none absolute inset-0 opacity-70" />
-          <div className="relative">
+        <div className={`relative bg-[#eef2f6] ${video ? "p-0" : "p-4"}`}>
+          {!video && (
+            <div className="hero-scene-grid pointer-events-none absolute inset-0 opacity-70" />
+          )}
+          <div className={video ? "aspect-video overflow-hidden bg-black" : "relative"}>
             <VisualMock kind={kind} />
           </div>
         </div>

@@ -626,6 +626,422 @@ rect.playhead {
   }
 }
 
+.film-stage-frame {
+  aspect-ratio: 16 / 10;
+  min-height: 22rem;
+}
+
+.film-stage-clip {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.7s ease;
+}
+
+.film-stage-clip.is-active {
+  opacity: 1;
+}
+
+.film-stage-clip video,
+.layout-film {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.film-stage-caption {
+  position: absolute;
+  right: 0;
+  bottom: 6.5rem;
+  left: 0;
+  padding: 4.5rem 1.5rem 1.1rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
+}
+
+.film-stage-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding: 0.85rem 1.5rem 1.2rem;
+}
+
+.film-stage-progress-item {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  color: inherit;
+}
+
+.film-stage-progress-track {
+  display: block;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.film-stage-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform-origin: left center;
+  transition: transform 0.16s linear;
+}
+
+.film-stage-progress-item:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .film-stage-frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .film-stage-caption {
+    bottom: 6.25rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .film-stage-progress {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+.layout-film {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 7.25rem;
+  background:
+    radial-gradient(120% 80% at 50% 18%, rgba(125, 211, 192, 0.08), transparent 46%),
+    #07080c;
+}
+
+.layout-film-grid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at center, #000 42%, transparent 78%);
+}
+
+.layout-film-svg {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.layout-film-hud {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.25rem;
+  z-index: 1;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(248, 249, 251, 0.42);
+}
+
+.layout-film-status {
+  margin-top: 0.35rem;
+  color: rgba(248, 249, 251, 0.78);
+}
+
+.layout-film-plan-label,
+.layout-film-plan-meta {
+  fill: #565a60;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  letter-spacing: 0.16em;
+}
+
+.layout-film-plan-label {
+  font-size: 11px;
+}
+
+.layout-film-plan-meta {
+  font-size: 9px;
+}
+
+.layout-film-iso-label {
+  fill: rgba(248, 249, 251, 0.58);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.layout-film-plan {
+  opacity: 0;
+  transform-origin: 480px 250px;
+}
+
+.layout-film-iso {
+  opacity: 1;
+}
+
+.layout-film.is-playing .layout-film-plan {
+  animation: layout-film-plan 14s ease-in-out infinite;
+}
+
+.layout-film.is-playing .layout-film-iso {
+  animation: layout-film-iso 14s ease-in-out infinite;
+}
+
+.layout-film.is-playing .layout-film-draw {
+  stroke-dasharray: 1;
+  animation: layout-film-draw 14s ease infinite;
+}
+
+.layout-film.is-playing .layout-film-plan-label,
+.layout-film.is-playing .layout-film-plan-meta {
+  animation: layout-film-plan-type 14s ease infinite;
+}
+
+.layout-film.is-playing .layout-film-box {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: layout-film-extrude 14s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.layout-film.is-playing .layout-film-window {
+  animation: layout-film-window 14s ease-in-out infinite;
+}
+
+.layout-film.is-playing .layout-film-path {
+  stroke-dashoffset: 0;
+  animation: layout-film-path 14s linear infinite;
+}
+
+.layout-film.is-playing .layout-film-iso-label {
+  animation: layout-film-iso-type 14s ease infinite;
+}
+
+.layout-film.is-playing .layout-film-scan {
+  animation: layout-film-scan 14s ease-in-out infinite;
+}
+
+.layout-film.is-playing .layout-film-ground {
+  animation: layout-film-ground 14s ease infinite;
+}
+
+.layout-film.is-playing .layout-film-svg {
+  animation: layout-film-float 14s ease-in-out infinite;
+}
+
+.layout-film.is-playing .layout-film-status {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes layout-film-plan {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  6%,
+  22% {
+    opacity: 1;
+    transform: none;
+  }
+  32% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.92) rotateX(28deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.92);
+  }
+}
+
+@keyframes layout-film-draw {
+  0% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+  }
+  5% {
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+  }
+  16% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.92;
+  }
+  24% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0.92;
+  }
+  34%,
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+}
+
+@keyframes layout-film-plan-type {
+  0%,
+  10% {
+    opacity: 0;
+  }
+  16%,
+  24% {
+    opacity: 1;
+  }
+  32%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes layout-film-iso {
+  0%,
+  24% {
+    opacity: 0;
+  }
+  32%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes layout-film-extrude {
+  0%,
+  26% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  38%,
+  88% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes layout-film-window {
+  0%,
+  36% {
+    opacity: 0;
+  }
+  44%,
+  58% {
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes layout-film-path {
+  0%,
+  40% {
+    opacity: 0;
+    stroke-dashoffset: 48;
+  }
+  48%,
+  86% {
+    opacity: 0.7;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -36;
+  }
+}
+
+@keyframes layout-film-iso-type {
+  0%,
+  42% {
+    opacity: 0;
+  }
+  50%,
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes layout-film-scan {
+  0%,
+  30% {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+  42%,
+  58% {
+    opacity: 0.85;
+    transform: translateX(8%);
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(14%);
+  }
+}
+
+@keyframes layout-film-ground {
+  0%,
+  24% {
+    opacity: 0;
+  }
+  32%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes layout-film-float {
+  0%,
+  32%,
+  100% {
+    transform: none;
+  }
+  60% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (max-width: 640px) {
+  .layout-film-hud {
+    top: 0.85rem;
+    left: 1rem;
+  }
+
+  .film-stage-progress-item span:last-child {
+    font-size: 12px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-visible {
@@ -661,12 +1077,15 @@ rect.playhead {
   .hero-scene-grid,
   .plan-label,
   .plan-meta,
-  .iso-label {
+  .iso-label,
+  .film-stage-clip,
+  .film-stage-progress-fill {
     animation: none;
     opacity: 1;
     transform: none;
     stroke-dashoffset: 0;
     fill-opacity: 1;
+    transition: none;
   }
 
   .btn-primary:hover,
@@ -684,5 +1103,39 @@ rect.playhead {
 
   html.scroll-smooth {
     scroll-behavior: auto;
+  }
+
+  .layout-film,
+  .layout-film-plan,
+  .layout-film-iso,
+  .layout-film-draw,
+  .layout-film-box,
+  .layout-film-window,
+  .layout-film-path,
+  .layout-film-scan,
+  .layout-film-ground,
+  .layout-film-plan-label,
+  .layout-film-plan-meta,
+  .layout-film-iso-label,
+  .layout-film-svg,
+  .layout-film-grid,
+  .layout-film-status {
+    animation: none !important;
+  }
+
+  .layout-film-plan {
+    opacity: 0;
+  }
+
+  .layout-film-iso,
+  .layout-film-box,
+  .layout-film-window,
+  .layout-film-path,
+  .layout-film-iso-label,
+  .layout-film-ground {
+    opacity: 1;
+    transform: none;
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
   }
 }

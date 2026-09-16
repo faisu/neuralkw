@@ -202,6 +202,42 @@ export const homeCopy = {
       },
     ],
   },
+  film: {
+    sceneDurationMs: 14000,
+    clips: [
+      {
+        id: "layout-to-model",
+        kind: "scene" as const,
+        number: "01",
+        title: "Layout to model",
+        overline: "The conversion",
+        caption: "A floor plan becomes a spatial model. Same rooms, same dimensions.",
+        label: "Floor plan extruding into a three-dimensional property model",
+      },
+      {
+        id: "living",
+        kind: "video" as const,
+        number: "02",
+        title: "Living space",
+        caption:
+          "A furnished room, camera-ready. The walkthrough is generated from the same model.",
+        src: "/videos/living.mp4",
+        poster: "/videos/living.jpg",
+        label: "Furnished modern living room interior",
+      },
+      {
+        id: "inhabited",
+        kind: "video" as const,
+        number: "03",
+        title: "Inside the view",
+        overline: "Made for buyers",
+        caption: "Lock an angle. Show the light, the glass, and how the space is used.",
+        src: "/videos/inhabited.mp4",
+        poster: "/videos/inhabited.jpg",
+        label: "Glass-walled residence with a person in the space",
+      },
+    ],
+  },
   showcase: {
     heading: "Models, video, web, print. Connected.",
     fromLabel: "FROM",

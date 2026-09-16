@@ -4,6 +4,7 @@ import { Manifesto } from "@/components/marketing/Manifesto";
 import { CapabilityStory } from "@/components/marketing/CapabilityStory";
 import { UseCases } from "@/components/marketing/UseCases";
 import { Showcase } from "@/components/marketing/Showcase";
+import { FilmStage } from "@/components/marketing/FilmStage";
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/ui/Reveal";
@@ -43,6 +44,8 @@ export default function HomePage() {
       <Section title={homeCopy.showcase.heading} className="border-t border-border-subtle">
         <Showcase />
       </Section>
+
+      <FilmStage />
 
       <Section
         id="waitlist"
