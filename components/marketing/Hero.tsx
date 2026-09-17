@@ -17,8 +17,11 @@ export function Hero() {
           </h1>
           <div className="hero-enter hero-enter-3 max-w-sm lg:justify-self-end">
             <p className="text-[17px] leading-relaxed text-text-muted">{hero.subcopy}</p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Button href={hero.primaryHref}>{hero.primaryCta}</Button>
+              <Button href={hero.secondaryHref} variant="secondary">
+                {hero.secondaryCta}
+              </Button>
             </div>
             <p className="mt-4 text-xs text-text-faint">{hero.trust}</p>
           </div>

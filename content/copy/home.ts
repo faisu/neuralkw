@@ -7,8 +7,8 @@ export const homeCopy = {
       "An end-to-end visualization platform for property marketing. Precise 3D from 2D, then video, website, and pamphlet — connected, without the overhead.",
     primaryCta: "Join waitlist",
     primaryHref: "/#waitlist",
-    secondaryCta: "See how it works",
-    secondaryHref: "/#workflow",
+    secondaryCta: "Open studio",
+    secondaryHref: "/studio",
     trust: "Early access for developers, architects, and agencies.",
   },
   product: {

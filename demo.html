@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Layout3D — 2D to 3D Converter</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #f7f8fc;
+      color: #17191f;
+    }
+
+    .app {
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .navbar {
+      height: 70px;
+      background: #fff;
+      border-bottom: 1px solid #e8e9ee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #635bff;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .badge {
+      background: #f0efff;
+      color: #635bff;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* Main */
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 55px 25px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.1;
+      letter-spacing: -1.8px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #635bff;
+    }
+
+    .hero p {
+      color: #737681;
+      font-size: 17px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* Card */
+    .card {
+      background: #fff;
+      border: 1px solid #e6e7ec;
+      border-radius: 18px;
+      box-shadow: 0 12px 40px rgba(20, 20, 40, 0.06);
+      padding: 30px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* Upload */
+    .upload-box {
+      border: 2px dashed #cfd1dc;
+      border-radius: 15px;
+      min-height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #fafaff;
+    }
+
+    .upload-box:hover,
+    .upload-box.dragover {
+      border-color: #635bff;
+      background: #f7f6ff;
+    }
+
+    .upload-icon {
+      width: 65px;
+      height: 65px;
+      border-radius: 18px;
+      background: #eeecff;
+      color: #635bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 30px;
+    }
+
+    .upload-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .upload-description {
+      color: #858793;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .formats {
+      font-size: 12px;
+      color: #999;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    /* File Preview */
+    .file-preview {
+      display: none;
+      margin-top: 20px;
+      border: 1px solid #e7e8ed;
+      border-radius: 12px;
+      padding: 15px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .file-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      background: #f0efff;
+      color: #635bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .file-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .file-size {
+      color: #999;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .remove {
+      border: 0;
+      background: #f5f5f7;
+      border-radius: 8px;
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      height: 45px;
+      border: 1px solid #dddfe6;
+      border-radius: 9px;
+      padding: 0 12px;
+      outline: none;
+      background: white;
+      font-size: 14px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #635bff;
+    }
+
+    /* Button */
+    .convert-btn {
+      width: 100%;
+      margin-top: 28px;
+      height: 52px;
+      border: 0;
+      border-radius: 10px;
+      background: #635bff;
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .convert-btn:hover {
+      background: #5149e8;
+      transform: translateY(-1px);
+    }
+
+    .convert-btn:disabled {
+      background: #aaa8c9;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Progress */
+    .progress-section {
+      display: none;
+      margin-top: 28px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      height: 9px;
+      background: #ececf2;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: #635bff;
+      transition: width 0.5s;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 22px;
+      gap: 10px;
+    }
+
+    .step {
+      font-size: 12px;
+      color: #999;
+      padding: 10px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .step.active {
+      color: #635bff;
+      background: #f1f0ff;
+      font-weight: 600;
+    }
+
+    .step.done {
+      color: #15945a;
+      background: #effbf5;
+    }
+
+    /* Result */
+    .result {
+      display: none;
+      margin-top: 35px;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .result-title {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .success {
+      background: #eafaf2;
+      color: #15945a;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Fake 3D Viewer */
+    .viewer {
+      height: 460px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+        #151822;
+      background-size: 35px 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .viewer-label {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      color: white;
+      background: rgba(0,0,0,.4);
+      padding: 8px 12px;
+      border-radius: 7px;
+      font-size: 12px;
+    }
+
+    .viewer-controls {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .viewer-controls button {
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: white;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* 3D House */
+    .house {
+      width: 430px;
+      height: 280px;
+      position: relative;
+      transform: perspective(800px) rotateX(58deg) rotateZ(-30deg);
+      transform-style: preserve-3d;
+      transition: transform .5s;
+    }
+
+    .floor {
+      position: absolute;
+      width: 430px;
+      height: 280px;
+      background: #e5e5e7;
+      border: 4px solid #ffffff;
+      box-shadow: 0 20px 35px rgba(0,0,0,.4);
+    }
+
+    .room {
+      position: absolute;
+      border: 3px solid #4f5158;
+      background: rgba(255,255,255,.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #30323a;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .room1 {
+      left: 12px;
+      top: 12px;
+      width: 170px;
+      height: 120px;
+    }
+
+    .room2 {
+      left: 190px;
+      top: 12px;
+      width: 228px;
+      height: 120px;
+    }
+
+    .room3 {
+      left: 12px;
+      top: 142px;
+      width: 190px;
+      height: 125px;
+    }
+
+    .room4 {
+      left: 210px;
+      top: 142px;
+      width: 208px;
+      height: 125px;
+    }
+
+    /* Actions */
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .action-btn {
+      height: 48px;
+      border: 1px solid #dddfe7;
+      background: white;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #363842;
+    }
+
+    .action-btn:hover {
+      border-color: #635bff;
+      color: #635bff;
+    }
+
+    .primary {
+      background: #635bff;
+      color: white;
+      border-color: #635bff;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0 18px;
+      }
+
+      .nav-right {
+        display: none;
+      }
+
+      .container {
+        padding: 35px 15px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .form-grid,
+      .steps,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .viewer {
+        height: 350px;
+      }
+
+      .house {
+        transform: perspective(700px) rotateX(58deg) rotateZ(-30deg) scale(.65);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Layout<span>3D</span></div>
+
+    <div class="nav-right">
+      <span>AI Floor Plan Converter</span>
+      <span class="badge">Demo</span>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Turn Your <span>2D Layout</span><br>Into a 3D Model</h1>
+      <p>
+        Upload your floor plan, configure your project and let AI
+        transform your 2D layout into an interactive 3D model.
+      </p>
+    </section>
+
+    <!-- Upload Card -->
+    <section class="card">
+
+      <div class="section-title">1. Upload your layout</div>
+
+      <div class="upload-box" id="uploadBox">
+        <div>
+          <div class="upload-icon">↑</div>
+
+          <div class="upload-title">
+            Drop your layout here
+          </div>
+
+          <div class="upload-description">
+            or click to browse from your computer
+          </div>
+
+          <div class="formats">
+            PDF · PNG · JPG · DXF · Max 25MB
+          </div>
+        </div>
+      </div>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept=".pdf,.png,.jpg,.jpeg,.dxf"
+      />
+
+      <!-- File Preview -->
+      <div class="file-preview" id="filePreview">
+
+        <div class="file-info">
+          <div class="file-icon">2D</div>
+
+          <div>
+            <div class="file-name" id="fileName">
+              layout.pdf
+            </div>
+
+            <div class="file-size" id="fileSize">
+              2.4 MB
+            </div>
+          </div>
+        </div>
+
+        <button class="remove" id="removeFile">
+          Remove
+        </button>
+
+      </div>
+
+      <!-- Configuration -->
+      <div class="section-title" style="margin-top:30px;">
+        2. Project configuration
+      </div>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Project Name</label>
+          <input
+            type="text"
+            id="projectName"
+            placeholder="My New Home"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Measurement Unit</label>
+          <select>
+            <option>Feet</option>
+            <option>Meter</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Floor Height</label>
+          <input
+            type="number"
+            value="10"
+            placeholder="10"
+          />
+        </div>
+
+      </div>
+
+      <!-- Convert -->
+      <button class="convert-btn" id="convertBtn" disabled>
+        Convert Layout to 3D Model
+      </button>
+
+      <!-- Progress -->
+      <div class="progress-section" id="progressSection">
+
+        <div class="progress-header">
+          <span id="progressText">
+            Preparing your layout...
+          </span>
+
+          <span id="progressPercent">
+            0%
+          </span>
+        </div>
+
+        <div class="progress-bar">
+          <div
+            class="progress-fill"
+            id="progressFill">
+          </div>
+        </div>
+
+        <div class="steps">
+
+          <div class="step" id="step1">
+            Uploading
+          </div>
+
+          <div class="step" id="step2">
+            Analyzing Layout
+          </div>
+
+          <div class="step" id="step3">
+            Generating 3D
+          </div>
+
+          <div class="step" id="step4">
+            Finalizing
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Result -->
+    <section class="card result" id="result">
+
+      <div class="result-header">
+
+        <div>
+          <div class="result-title">
+            Your 3D Model
+          </div>
+
+          <div style="color:#888;font-size:13px;margin-top:5px;">
+            Generated from your uploaded 2D layout
+          </div>
+        </div>
+
+        <div class="success">
+          ✓ Conversion Complete
+        </div>
+
+      </div>
+
+
+      <!-- 3D Viewer -->
+      <div class="viewer">
+
+        <div class="viewer-label">
+          3D Preview
+        </div>
+
+        <div class="viewer-controls">
+          <button onclick="rotateModel(-10)">↶</button>
+          <button onclick="rotateModel(10)">↷</button>
+          <button onclick="resetModel()">⌂</button>
+        </div>
+
+        <div class="house" id="house">
+
+          <div class="floor"></div>
+
+          <div class="room room1">
+            Bedroom
+          </div>
+
+          <div class="room room2">
+            Living Room
+          </div>
+
+          <div class="room room3">
+            Kitchen
+          </div>
+
+          <div class="room room4">
+            Dining
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Actions -->
+      <div class="actions">
+
+        <button class="action-btn primary">
+          Download 3D Model
+        </button>
+
+        <button class="action-btn">
+          Generate Video
+        </button>
+
+        <button class="action-btn">
+          Create Website
+        </button>
+
+        <button class="action-btn">
+          Generate Pamphlet
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+  const uploadBox = document.getElementById("uploadBox");
+  const fileInput = document.getElementById("fileInput");
+  const filePreview = document.getElementById("filePreview");
+  const fileName = document.getElementById("fileName");
+  const fileSize = document.getElementById("fileSize");
+  const removeFile = document.getElementById("removeFile");
+  const convertBtn = document.getElementById("convertBtn");
+
+  const progressSection =
+    document.getElementById("progressSection");
+
+  const progressFill =
+    document.getElementById("progressFill");
+
+  const progressText =
+    document.getElementById("progressText");
+
+  const progressPercent =
+    document.getElementById("progressPercent");
+
+  const result =
+    document.getElementById("result");
+
+
+  let selectedFile = null;
+
+
+  /* Upload */
+
+  uploadBox.addEventListener("click", () => {
+    fileInput.click();
+  });
+
+
+  fileInput.addEventListener("change", () => {
+
+    if (fileInput.files.length) {
+      handleFile(fileInput.files[0]);
+    }
+
+  });
+
+
+  uploadBox.addEventListener("dragover", (e) => {
+
+    e.preventDefault();
+
+    uploadBox.classList.add("dragover");
+
+  });
+
+
+  uploadBox.addEventListener("dragleave", () => {
+
+    uploadBox.classList.remove("dragover");
+
+  });
+
+
+  uploadBox.addEventListener("drop", (e) => {
+
+    e.preventDefault();
+
+    uploadBox.classList.remove("dragover");
+
+    if (e.dataTransfer.files.length) {
+      handleFile(e.dataTransfer.files[0]);
+    }
+
+  });
+
+
+  function handleFile(file) {
+
+    const maxSize = 25 * 1024 * 1024;
+
+    if (file.size > maxSize) {
+      alert("File size must be less than 25MB.");
+      return;
+    }
+
+    selectedFile = file;
+
+    fileName.textContent = file.name;
+
+    fileSize.textContent =
+      formatFileSize(file.size);
+
+    filePreview.style.display = "flex";
+
+    convertBtn.disabled = false;
+
+  }
+
+
+  function formatFileSize(bytes) {
+
+    if (bytes < 1024 * 1024) {
+      return (bytes / 1024).toFixed(1) + " KB";
+    }
+
+    return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+
+  }
+
+
+  /* Remove */
+
+  removeFile.addEventListener("click", () => {
+
+    selectedFile = null;
+
+    fileInput.value = "";
+
+    filePreview.style.display = "none";
+
+    convertBtn.disabled = true;
+
+    progressSection.style.display = "none";
+
+    result.style.display = "none";
+
+  });
+
+
+  /* Conversion Demo */
+
+  convertBtn.addEventListener("click", () => {
+
+    if (!selectedFile) return;
+
+    convertBtn.disabled = true;
+
+    progressSection.style.display = "block";
+
+    result.style.display = "none";
+
+    let progress = 0;
+
+    const steps = [
+      {
+        value: 20,
+        text: "Uploading your layout..."
+      },
+      {
+        value: 45,
+        text: "Analyzing walls, rooms and dimensions..."
+      },
+      {
+        value: 75,
+        text: "Generating 3D model..."
+      },
+      {
+        value: 100,
+        text: "Finalizing your 3D model..."
+      }
+    ];
+
+    let currentStep = 0;
+
+
+    const interval = setInterval(() => {
+
+      progress += 2;
+
+      if (
+        currentStep < steps.length &&
+        progress >= steps[currentStep].value
+      ) {
+
+        progressText.textContent =
+          steps[currentStep].text;
+
+        activateStep(currentStep);
+
+        currentStep++;
+
+      }
+
+      progressFill.style.width =
+        progress + "%";
+
+      progressPercent.textContent =
+        progress + "%";
+
+
+      if (progress >= 100) {
+
+        clearInterval(interval);
+
+        setTimeout(() => {
+
+          result.style.display = "block";
+
+          result.scrollIntoView({
+            behavior: "smooth"
+          });
+
+          convertBtn.disabled = false;
+
+        }, 500);
+
+      }
+
+    }, 80);
+
+  });
+
+
+  function activateStep(index) {
+
+    for (let i = 1; i <= 4; i++) {
+
+      const step =
+        document.getElementById("step" + i);
+
+      if (i - 1 < index) {
+        step.classList.add("done");
+      }
+
+      if (i - 1 === index) {
+        step.classList.add("active");
+      }
+
+    }
+
+  }
+
+
+  /* 3D Viewer Demo */
+
+  let rotation = -30;
+
+  function rotateModel(value) {
+
+    rotation += value;
+
+    document.getElementById("house").style.transform =
+      `perspective(800px) rotateX(58deg) rotateZ(${rotation}deg)`;
+
+  }
+
+
+  function resetModel() {
+
+    rotation = -30;
+
+    document.getElementById("house").style.transform =
+      "perspective(800px) rotateX(58deg) rotateZ(-30deg)";
+
+  }
+
+</script>
+
+</body>
+</html>
