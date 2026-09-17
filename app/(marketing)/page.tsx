@@ -1,5 +1,8 @@
 import { Hero } from "@/components/marketing/Hero";
-import { ProductWorkflow } from "@/components/marketing/ProductWorkflow";
+import { CreateStory } from "@/components/marketing/CreateStory";
+import { VideoStory } from "@/components/marketing/VideoStory";
+import { WebsiteStory } from "@/components/marketing/WebsiteStory";
+import { PamphletStory } from "@/components/marketing/PamphletStory";
 import { Manifesto } from "@/components/marketing/Manifesto";
 import { CapabilityStory } from "@/components/marketing/CapabilityStory";
 import { UseCases } from "@/components/marketing/UseCases";
@@ -23,15 +26,22 @@ export default function HomePage() {
         })}
       />
       <Hero />
+      <CreateStory />
 
-      <Section
-        id="product"
-        title={homeCopy.product.heading}
-        description={homeCopy.product.subheading}
-        className="border-t border-border-subtle pt-10 md:pt-12"
-      >
-        <ProductWorkflow />
-      </Section>
+      <section id="product" className="scroll-mt-20 border-t border-border-subtle">
+        <div className="mx-auto max-w-[1200px] px-6 py-12 md:px-10 md:py-16">
+          <h2 className="max-w-3xl text-3xl font-normal tracking-[-0.04em] text-text-primary md:text-[2.45rem] md:leading-[1.15]">
+            {homeCopy.product.heading}
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted md:text-[17px]">
+            {homeCopy.product.subheading}
+          </p>
+        </div>
+      </section>
+
+      <VideoStory />
+      <WebsiteStory />
+      <PamphletStory />
 
       <Manifesto />
 

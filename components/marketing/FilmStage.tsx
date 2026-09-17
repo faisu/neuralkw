@@ -1,14 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LayoutToModelClip } from "@/components/marketing/LayoutToModelClip";
 import { homeCopy } from "@/content/copy/home";
-
-function isVideoClip(
-  clip: (typeof homeCopy.film.clips)[number],
-): clip is Extract<(typeof homeCopy.film.clips)[number], { kind: "video" }> {
-  return clip.kind === "video";
-}
 
 export function FilmStage() {
   const { clips } = homeCopy.film;
@@ -50,17 +43,12 @@ export function FilmStage() {
     syncPlayback();
   }, [syncPlayback]);
 
-  const reportSceneProgress = useCallback((value: number) => {
-    setProgress(value);
-  }, []);
-
   const select = (next: number) => {
     setProgress(0);
     setIndex(next);
   };
 
-  const activeClip = clips[index];
-  const scenePlaying = activeClip?.kind === "scene" && inView;
+  const contain = clips[index] && "fit" in clips[index] && clips[index].fit === "contain";
 
   return (
     <section
@@ -70,44 +58,39 @@ export function FilmStage() {
       aria-label="Property films"
     >
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 md:py-28">
-        <div className="film-stage-frame relative overflow-hidden rounded-lg bg-black">
+        <div
+          className={`film-stage-frame relative overflow-hidden rounded-lg bg-black ${contain ? "is-contain" : ""}`}
+        >
           {clips.map((clip, i) => {
             const active = i === index;
-            const video = isVideoClip(clip);
+            const clipContain = "fit" in clip && clip.fit === "contain";
 
             return (
               <figure
                 key={clip.id}
-                className={`film-stage-clip ${active ? "is-active" : ""}`}
-                style={video ? { backgroundImage: `url(${clip.poster})` } : undefined}
+                className={`film-stage-clip ${active ? "is-active" : ""} ${clipContain ? "is-contain" : ""}`}
+                style={{ backgroundImage: `url(${clip.poster})` }}
                 aria-label={active ? clip.label : undefined}
                 aria-hidden={active ? undefined : true}
               >
-                {clip.kind === "scene" ? (
-                  <LayoutToModelClip
-                    playing={scenePlaying && active}
-                    onProgress={reportSceneProgress}
-                  />
-                ) : (
-                  <video
-                    ref={(node) => {
-                      videosRef.current[i] = node;
-                    }}
-                    poster={clip.poster}
-                    muted
-                    loop
-                    playsInline
-                    preload="none"
-                    aria-label={clip.label}
-                    onTimeUpdate={() => {
-                      const node = videosRef.current[i];
-                      if (!node || i !== index || !node.duration) return;
-                      setProgress(node.currentTime / node.duration);
-                    }}
-                  >
-                    <source src={clip.src} type="video/mp4" />
-                  </video>
-                )}
+                <video
+                  ref={(node) => {
+                    videosRef.current[i] = node;
+                  }}
+                  poster={clip.poster}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-label={clip.label}
+                  onTimeUpdate={() => {
+                    const node = videosRef.current[i];
+                    if (!node || i !== index || !node.duration) return;
+                    setProgress(node.currentTime / node.duration);
+                  }}
+                >
+                  <source src={clip.src} type="video/mp4" />
+                </video>
                 <figcaption className="film-stage-caption">
                   {"overline" in clip && clip.overline ? (
                     <span className="block text-[11px] font-medium uppercase tracking-[0.2em] text-white/50">
@@ -144,10 +127,12 @@ export function FilmStage() {
                     />
                   </span>
                   <span className="mt-2 flex gap-2 text-left">
-                    <span className="font-mono text-[11px] tracking-[0.16em] text-white/45">
+                    <span className="font-mono text-[11px] tracking-[0.16em] text-white/50">
                       {clip.number}
                     </span>
-                    <span className="text-sm font-medium text-white/80">{clip.title}</span>
+                    <span className={`text-sm font-medium ${selected ? "text-white" : "text-white/70"}`}>
+                      {clip.title}
+                    </span>
                   </span>
                 </button>
               );
