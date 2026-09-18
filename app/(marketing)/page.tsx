@@ -6,7 +6,6 @@ import { PamphletStory } from "@/components/marketing/PamphletStory";
 import { Manifesto } from "@/components/marketing/Manifesto";
 import { CapabilityStory } from "@/components/marketing/CapabilityStory";
 import { UseCases } from "@/components/marketing/UseCases";
-import { Showcase } from "@/components/marketing/Showcase";
 import { FilmStage } from "@/components/marketing/FilmStage";
 import { WaitlistForm } from "@/components/marketing/WaitlistForm";
 import { Section } from "@/components/layout/Section";
@@ -49,10 +48,6 @@ export default function HomePage() {
 
       <Section id="use-cases" title={homeCopy.useCases.heading}>
         <UseCases />
-      </Section>
-
-      <Section title={homeCopy.showcase.heading} className="border-t border-border-subtle">
-        <Showcase />
       </Section>
 
       <FilmStage />

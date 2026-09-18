@@ -408,18 +408,6 @@ export const homeCopy = {
       },
     ],
   },
-  showcase: {
-    heading: "Models, video, web, print. Connected.",
-    fromLabel: "FROM",
-    fromTitle: "2D floor plan",
-    toLabel: "TO",
-    outputs: [
-      { title: "3D property", visual: "model" as const },
-      { title: "Video", visual: "video" as const },
-      { title: "Website", visual: "website" as const },
-      { title: "Pamphlet", visual: "pamphlet" as const },
-    ],
-  },
   waitlist: {
     eyebrow: "Early access",
     headline: "Join the waitlist",
