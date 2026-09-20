@@ -14,72 +14,47 @@ export default function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #1E293B 0%, #0B0F19 100%)",
+          padding: 80,
+          background: "#F8F9FB",
           fontFamily: "system-ui, sans-serif",
         }}
       >
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <svg width="28" height="28" viewBox="0 0 22 22" fill="none">
+            <rect
+              x="2.5"
+              y="2.5"
+              width="17"
+              height="17"
+              stroke="#08090B"
+              strokeWidth="1.5"
+            />
+            <path d="M2.5 12.5h17M9.5 2.5v17" stroke="#08090B" strokeWidth="1.3" />
+          </svg>
+          <span style={{ fontSize: 28, color: "#08090B", letterSpacing: -0.6 }}>
+            {siteConfig.name}
+          </span>
+        </div>
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
+            marginTop: 48,
+            fontSize: 64,
+            lineHeight: 1.05,
+            color: "#08090B",
+            letterSpacing: -2,
+            fontWeight: 400,
+            maxWidth: 920,
           }}
         >
-          <div
-            style={{
-              width: 80,
-              height: 80,
-              borderRadius: 16,
-              background: "linear-gradient(135deg, #34D399, #06B6D4)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 13l4 4L19 7"
-                stroke="#0B0F19"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <span
-              style={{
-                fontSize: 64,
-                fontWeight: 800,
-                color: "#FFFFFF",
-                letterSpacing: -1,
-              }}
-            >
-              neural
-              <span style={{ color: "#34D399" }}>kw</span>
-            </span>
-            <span
-              style={{
-                fontSize: 20,
-                fontWeight: 700,
-                color: "#94A3B8",
-                letterSpacing: 4,
-                marginTop: 4,
-              }}
-            >
-              AGENTIC BILL RECONCILIATION
-            </span>
-          </div>
+          From floor plan to a living 3D story.
         </div>
         <p
           style={{
-            marginTop: 40,
+            marginTop: 28,
             fontSize: 24,
-            color: "#94A3B8",
-            maxWidth: 800,
-            textAlign: "center",
+            color: "#565A60",
+            maxWidth: 760,
             lineHeight: 1.4,
           }}
         >

@@ -1,39 +1,26 @@
-import { Logo } from "@/components/brand/Logo";
-import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { homeCopy } from "@/content/copy/home";
-import { siteConfig } from "@/lib/seo";
 
 export function Hero() {
   const { hero } = homeCopy;
 
   return (
-    <section className="grid-bg relative overflow-hidden py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-col items-center text-center">
-          <Badge>AI</Badge>
-          <div className="mt-8 w-full max-w-3xl">
-            <Logo variant="full" priority className="mx-auto" />
-          </div>
-          <h1 className="mt-10 max-w-3xl text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            {hero.headline}
+    <section className="relative">
+      <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-10 md:pt-24 md:pb-10">
+        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.7fr)] lg:gap-16">
+          <h1 className="max-w-[12ch] text-[2.7rem] font-normal leading-[1.05] tracking-[-0.055em] text-text-primary sm:text-6xl md:text-[4.5rem] md:leading-[1.02]">
+            <span className="hero-enter hero-enter-1 block">{hero.headline}</span>
+            <span className="hero-enter hero-enter-2 mt-1 block">
+              <span className="text-text-faint">{hero.headlineMuted}</span> {hero.headlineEnd}
+            </span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-text-muted">{hero.subcopy}</p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button disabled>{hero.primaryCta}</Button>
-            <Button href={hero.secondaryHref} variant="secondary">
-              {hero.secondaryCta}
-            </Button>
+          <div className="hero-enter hero-enter-3 max-w-sm lg:justify-self-end">
+            <p className="text-[17px] leading-relaxed text-text-muted">{hero.subcopy}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href={hero.primaryHref}>{hero.primaryCta}</Button>
+            </div>
+            <p className="mt-4 text-xs text-text-faint">{hero.trust}</p>
           </div>
-          <p className="mt-6 text-sm text-text-muted">
-            Or email{" "}
-            <a
-              href={`mailto:${siteConfig.agentEmail}`}
-              className="text-accent-cyan hover:underline"
-            >
-              {siteConfig.agentEmail}
-            </a>
-          </p>
         </div>
       </div>
     </section>

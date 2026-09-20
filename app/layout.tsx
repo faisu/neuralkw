@@ -1,19 +1,19 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Sans, Geist_Mono } from "next/font/google";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SiteCursor } from "@/components/ui/SiteCursor";
 import {
   createMetadata,
-  organizationJsonLd,
-  websiteJsonLd,
+  homeTitle,
   siteConfig,
+  siteJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const instrument = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -21,17 +21,28 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const homeMetadata = createMetadata({
+  title: siteConfig.tagline,
+  description: siteConfig.description,
+  path: "/",
+  keywords: [
+    "property visualization platform",
+    "real estate 3D walkthrough",
+  ],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  ...createMetadata({
-    title: "Home",
-    description: siteConfig.description,
-    path: "/",
-    keywords: [
-      "agreement-based bill validation",
-      "enterprise invoice automation",
-    ],
-  }),
+  ...homeMetadata,
+  title: {
+    default: homeTitle,
+    template: `%s | ${siteConfig.name}`,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#F8F9FB",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -39,21 +50,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = [organizationJsonLd(), websiteJsonLd()];
-
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${instrument.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-bg-primary text-text-primary">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+      <body className="site-hatch flex min-h-full flex-col bg-bg-primary text-text-primary">
+        <noscript>
+          <style>{`.reveal{opacity:1;transform:none}`}</style>
+        </noscript>
+        <JsonLd data={siteJsonLd()} />
+        <SiteCursor />
+        {children}
       </body>
     </html>
   );

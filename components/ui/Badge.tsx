@@ -8,12 +8,12 @@ type BadgeProps = {
 export function Badge({ children, variant = "ai" }: BadgeProps) {
   const styles =
     variant === "ai"
-      ? "border-accent-cyan text-accent-cyan"
+      ? "border-border-subtle text-text-muted"
       : "border-accent-emerald text-accent-emerald";
 
   return (
     <span
-      className={`inline-block rounded-md border px-2 py-0.5 text-xs font-bold uppercase tracking-wider ${styles}`}
+      className={`inline-block rounded-[4px] border px-2 py-0.5 text-xs font-medium tracking-wide ${styles}`}
     >
       {children}
     </span>
