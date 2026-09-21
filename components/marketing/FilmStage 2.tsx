@@ -57,58 +57,56 @@ export function FilmStage() {
       className="scroll-mt-20 bg-bg-ink text-[#f8f9fb]"
       aria-label="Property films"
     >
-      <div className="mx-auto max-w-[1200px] px-4 py-12 sm:px-6 sm:py-20 md:px-10 md:py-28">
+      <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-10 md:py-28">
         <div
           className={`film-stage-frame relative overflow-hidden rounded-lg bg-black ${contain ? "is-contain" : ""}`}
         >
-          <div className="film-stage-stage">
-            {clips.map((clip, i) => {
-              const active = i === index;
-              const clipContain = "fit" in clip && clip.fit === "contain";
+          {clips.map((clip, i) => {
+            const active = i === index;
+            const clipContain = "fit" in clip && clip.fit === "contain";
 
-              return (
-                <figure
-                  key={clip.id}
-                  className={`film-stage-clip ${active ? "is-active" : ""} ${clipContain ? "is-contain" : ""}`}
-                  style={{ backgroundImage: `url(${clip.poster})` }}
-                  aria-label={active ? clip.label : undefined}
-                  aria-hidden={active ? undefined : true}
+            return (
+              <figure
+                key={clip.id}
+                className={`film-stage-clip ${active ? "is-active" : ""} ${clipContain ? "is-contain" : ""}`}
+                style={{ backgroundImage: `url(${clip.poster})` }}
+                aria-label={active ? clip.label : undefined}
+                aria-hidden={active ? undefined : true}
+              >
+                <video
+                  ref={(node) => {
+                    videosRef.current[i] = node;
+                  }}
+                  poster={clip.poster}
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  aria-label={clip.label}
+                  onTimeUpdate={() => {
+                    const node = videosRef.current[i];
+                    if (!node || i !== index || !node.duration) return;
+                    setProgress(node.currentTime / node.duration);
+                  }}
                 >
-                  <video
-                    ref={(node) => {
-                      videosRef.current[i] = node;
-                    }}
-                    poster={clip.poster}
-                    muted
-                    loop
-                    playsInline
-                    preload="none"
-                    aria-label={clip.label}
-                    onTimeUpdate={() => {
-                      const node = videosRef.current[i];
-                      if (!node || i !== index || !node.duration) return;
-                      setProgress(node.currentTime / node.duration);
-                    }}
-                  >
-                    <source src={clip.src} type="video/mp4" />
-                  </video>
-                  <figcaption className="film-stage-caption">
-                    {"overline" in clip && clip.overline ? (
-                      <span className="block text-[11px] font-medium uppercase tracking-[0.2em] text-white/50">
-                        {clip.overline}
-                      </span>
-                    ) : null}
-                    <strong className="mt-1 block text-base font-medium tracking-[-0.03em] text-white md:text-xl">
-                      {clip.title}
-                    </strong>
-                    <span className="mt-2 block max-w-md text-sm leading-relaxed text-white/70">
-                      {clip.caption}
+                  <source src={clip.src} type="video/mp4" />
+                </video>
+                <figcaption className="film-stage-caption">
+                  {"overline" in clip && clip.overline ? (
+                    <span className="block text-[11px] font-medium uppercase tracking-[0.2em] text-white/50">
+                      {clip.overline}
                     </span>
-                  </figcaption>
-                </figure>
-              );
-            })}
-          </div>
+                  ) : null}
+                  <strong className="mt-1 block text-lg font-medium tracking-[-0.03em] text-white md:text-xl">
+                    {clip.title}
+                  </strong>
+                  <span className="mt-2 block max-w-md text-sm leading-relaxed text-white/70">
+                    {clip.caption}
+                  </span>
+                </figcaption>
+              </figure>
+            );
+          })}
 
           <nav className="film-stage-progress" aria-label="Film clips">
             {clips.map((clip, i) => {
@@ -117,7 +115,7 @@ export function FilmStage() {
                 <button
                   key={clip.id}
                   type="button"
-                  className={`film-stage-progress-item min-w-0 ${selected ? "is-active" : ""}`}
+                  className={`film-stage-progress-item ${selected ? "is-active" : ""}`}
                   aria-current={selected ? "true" : undefined}
                   aria-label={`Show clip ${clip.number}, ${clip.title}`}
                   onClick={() => select(i)}
@@ -132,11 +130,7 @@ export function FilmStage() {
                     <span className="font-mono text-[11px] tracking-[0.16em] text-white/50">
                       {clip.number}
                     </span>
-                    <span
-                      className={`text-[11px] font-medium leading-tight sm:text-sm ${
-                        selected ? "text-white" : "text-white/70"
-                      }`}
-                    >
+                    <span className={`text-sm font-medium ${selected ? "text-white" : "text-white/70"}`}>
                       {clip.title}
                     </span>
                   </span>

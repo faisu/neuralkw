@@ -32,11 +32,11 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
       </div>
 
       <div
-        className="absolute inset-0 flex items-center justify-center p-4 sm:p-10"
+        className="absolute inset-0 flex items-center justify-center p-3 sm:p-10"
         style={{ opacity: sheetIn, perspective: "1600px" }}
       >
         <div
-          className="story-spread relative flex h-[min(28rem,78%)] w-full max-w-3xl"
+          className="story-spread relative flex h-[min(22rem,82%)] w-full max-w-3xl sm:h-[min(28rem,78%)]"
           style={{
             transform: `rotateX(${16 - open * 14}deg)`,
             transformStyle: "preserve-3d",
@@ -49,7 +49,7 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
               transformOrigin: "right center",
             }}
           >
-            <div className="flex h-full flex-col p-4 sm:p-6">
+            <div className="flex h-full flex-col p-2.5 sm:p-6">
               <p
                 className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-faint"
                 style={{ opacity: fill }}
@@ -57,7 +57,7 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
                 {homeCopy.pamphlet.project}
               </p>
               <h3
-                className="mt-1 text-lg tracking-[-0.04em] text-text-primary sm:text-xl"
+                className="mt-1 text-sm tracking-[-0.04em] text-text-primary sm:mt-1 sm:text-xl"
                 style={{ opacity: fill }}
               >
                 A courtyard residence
@@ -69,7 +69,7 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
                 <StudioFloorPlan className="h-full w-full object-contain" />
               </div>
               <p
-                className="mt-2 shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-text-faint"
+                className="mt-2 hidden shrink-0 font-mono text-[10px] uppercase tracking-[0.16em] text-text-faint sm:block"
                 style={{ opacity: fill }}
               >
                 Cover · Plan 1:150
@@ -87,12 +87,12 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
               transformOrigin: "left center",
             }}
           >
-            <div className="flex h-full flex-col p-4 sm:p-6">
+            <div className="flex h-full flex-col p-2.5 sm:p-6">
               <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.18em] text-text-faint">
                 Interior
               </p>
               <div
-                className="relative mt-3 min-h-[7rem] flex-1 overflow-hidden rounded-[4px] bg-[#eef2f6]"
+                className="relative mt-2 min-h-[4.5rem] flex-1 overflow-hidden rounded-[4px] bg-[#eef2f6] sm:mt-3 sm:min-h-[7rem]"
                 style={{ opacity: 0.18 + fill * 0.82 }}
               >
                 <div
@@ -110,7 +110,7 @@ function PamphletCanvas({ progress, converting, ready }: OutputCanvasProps) {
                   </div>
                 </div>
               </div>
-              <ul className="mt-3 grid shrink-0 grid-cols-2 gap-x-3 gap-y-1.5">
+              <ul className="mt-2 hidden shrink-0 grid-cols-2 gap-x-3 gap-y-1.5 sm:mt-3 sm:grid">
                 {rooms.map((room, index) => (
                   <li
                     key={room.name}

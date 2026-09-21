@@ -2,18 +2,12 @@
 
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
-import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/Button";
 import { navLinks } from "@/lib/constants";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const panelId = useId();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -30,38 +24,6 @@ export function MobileNav() {
       document.body.style.overflow = "";
     };
   }, [open]);
-
-  const panel =
-    open && mounted
-      ? createPortal(
-          <div
-            id={panelId}
-            className="mobile-panel fixed inset-x-0 top-14 bottom-0 z-[60] overflow-y-auto bg-bg-primary px-4 py-6 sm:px-6"
-          >
-            <nav aria-label="Mobile">
-              <ul className="flex flex-col">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="block min-h-11 py-2.5 text-[15px] font-medium text-text-primary"
-                      onClick={() => setOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="mt-4">
-              <Button href="/#waitlist" className="w-full" onClick={() => setOpen(false)}>
-                Join waitlist
-              </Button>
-            </div>
-          </div>,
-          document.body,
-        )
-      : null;
 
   return (
     <div className="md:hidden">
@@ -93,7 +55,34 @@ export function MobileNav() {
           </svg>
         )}
       </button>
-      {panel}
+
+      {open ? (
+        <div
+          id={panelId}
+          className="mobile-panel absolute inset-x-0 top-14 z-50 border-b border-border-subtle bg-bg-primary px-6 py-6"
+        >
+          <nav aria-label="Mobile">
+            <ul className="flex flex-col">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="block min-h-11 py-2.5 text-[15px] font-medium text-text-primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="mt-4">
+            <Button href="/#waitlist" className="w-full" onClick={() => setOpen(false)}>
+              Join waitlist
+            </Button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

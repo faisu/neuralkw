@@ -8,7 +8,7 @@ export function UseCases() {
       {homeCopy.useCases.items.map((item) => (
         <article
           key={item.title}
-            className="use-case-card border-t border-border-subtle py-7 pr-4 sm:pr-8 sm:odd:pr-10 lg:[&:nth-child(3n)]:pr-0"
+            className="use-case-card border-t border-border-subtle py-7 pr-8 sm:odd:pr-10 lg:[&:nth-child(3n)]:pr-0"
         >
           <UseCaseIcon name={item.icon} />
           <h3 className="mt-4 text-[17px] font-medium tracking-[-0.02em] text-text-primary">

@@ -18,10 +18,10 @@ export function Section({
   id,
 }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-20 py-20 md:py-28 ${className}`}>
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+    <section id={id} className={`scroll-mt-20 py-14 sm:py-20 md:py-28 ${className}`}>
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 md:px-10">
         {(eyebrow || title || description) && (
-          <div className="mb-12 max-w-3xl">
+          <div className="mb-8 max-w-3xl sm:mb-12">
             {eyebrow && (
               <p className="text-[15px] text-text-faint">{eyebrow}</p>
             )}

@@ -36,7 +36,7 @@ export default function TermsPage() {
       />
       <Section className="pt-28">
         <article className="max-w-3xl">
-          <h1 className="text-4xl font-normal tracking-[-0.04em] text-text-primary">Terms of Service</h1>
+          <h1 className="text-3xl font-normal tracking-[-0.04em] text-text-primary sm:text-4xl">Terms of Service</h1>
           <p className="mt-4 text-text-muted">Last updated: September 16, 2026</p>
 
           <div className="mt-8 space-y-6 text-text-muted">

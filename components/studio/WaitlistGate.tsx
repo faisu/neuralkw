@@ -48,7 +48,7 @@ export function WaitlistGate({ open, onClose }: WaitlistGateProps) {
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="relative z-10 w-full max-w-lg border border-border-subtle bg-bg-primary p-6 shadow-[0_24px_60px_rgba(8,9,11,0.16)] focus-visible:outline-none sm:p-8"
+        className="relative z-10 w-full max-w-lg overflow-y-auto border border-border-subtle bg-bg-primary p-5 shadow-[0_24px_60px_rgba(8,9,11,0.16)] focus-visible:outline-none sm:p-8"
       >
         <h2 id={titleId} className="text-2xl font-normal tracking-[-0.04em]">
           {studioCopy.gate.title}
