@@ -6,8 +6,8 @@ import { navLinks } from "@/lib/constants";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border-subtle bg-bg-primary/90 backdrop-blur-md">
-      <div className="relative mx-auto flex h-14 max-w-[1360px] items-center justify-between px-5 md:px-8">
+    <header className="sticky top-0 z-50 border-b border-border-subtle bg-bg-primary/95 backdrop-blur-md">
+      <div className="relative mx-auto flex h-14 max-w-[1360px] items-center justify-between px-4 sm:px-5 md:px-8">
         <Logo variant="header" priority />
         <nav
           className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex"

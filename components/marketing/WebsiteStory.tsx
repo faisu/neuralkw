@@ -40,7 +40,7 @@ function WebsiteCanvas({ progress, converting, ready }: OutputCanvasProps) {
         {PINS.map((pin, index) => (
           <span
             key={pin.label}
-            className="story-pin"
+            className="story-pin max-sm:hidden"
             style={{
               left: pin.x,
               top: pin.y,
@@ -55,7 +55,7 @@ function WebsiteCanvas({ progress, converting, ready }: OutputCanvasProps) {
       </div>
 
       <div
-        className="absolute inset-3 flex items-center justify-center sm:inset-6"
+        className="absolute inset-2 flex items-center justify-center sm:inset-6"
         style={{
           opacity: browserIn,
           transform: `translateY(${(1 - browserIn) * 28}px) scale(${0.94 + siteIn * 0.06})`,
@@ -90,11 +90,11 @@ function WebsiteCanvas({ progress, converting, ready }: OutputCanvasProps) {
                   )
                 ) : null}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/55">
                     {homeCopy.website.project}
                   </p>
-                  <p className="mt-1 text-xl tracking-[-0.04em] text-white sm:text-2xl">
+                  <p className="mt-1 text-lg tracking-[-0.04em] text-white sm:text-2xl">
                     A courtyard residence
                   </p>
                 </div>

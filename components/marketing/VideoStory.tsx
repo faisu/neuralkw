@@ -69,17 +69,17 @@ function VideoCanvas({ progress, converting, ready }: OutputCanvasProps) {
           <circle cx={cam[0]} cy={cam[1]} r="1.6" fill="#08090b" stroke="#fff" strokeWidth="0.45" />
         </svg>
         <div
-          className="absolute top-4 left-4 rounded-[4px] border border-border-subtle bg-bg-surface/90 px-3 py-2"
+          className="absolute top-3 left-3 rounded-[4px] border border-border-subtle bg-bg-surface/90 px-2.5 py-1.5 sm:top-4 sm:left-4 sm:px-3 sm:py-2"
           style={{ opacity: pathIn * (1 - filmIn) }}
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-text-faint">Cam 01</p>
-          <p className="mt-1 text-sm text-text-primary">Living → Court → Kitchen</p>
+          <p className="mt-1 text-xs text-text-primary sm:text-sm">Living → Court → Kitchen</p>
         </div>
       </div>
 
       {showFilm ? (
         <div
-          className="absolute inset-0 flex items-center justify-center p-4 sm:p-8"
+          className="absolute inset-0 flex items-center justify-center p-3 sm:p-8"
           style={{ opacity: filmIn }}
         >
           <div className="story-film relative w-full max-w-3xl overflow-hidden rounded-[4px] bg-[#111318] shadow-[0_24px_60px_rgba(8,9,11,0.28)]">

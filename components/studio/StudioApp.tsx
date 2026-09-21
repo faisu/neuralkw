@@ -206,23 +206,23 @@ export function StudioApp() {
   return (
     <div className="studio-shell flex min-h-dvh flex-col bg-bg-primary">
       <header className="sticky top-0 z-40 border-b border-border-subtle bg-bg-primary/90 backdrop-blur-md">
-        <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="flex h-14 items-center justify-between gap-3 px-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
             <Logo variant="header" />
             <span className="hidden h-4 w-px bg-border-subtle sm:block" />
             <p className="hidden text-sm text-text-muted sm:block">{studioCopy.title}</p>
-            <span className="rounded-[4px] border border-border-subtle px-2 py-0.5 text-[11px] font-medium text-text-muted">
+            <span className="hidden rounded-[4px] border border-border-subtle px-2 py-0.5 text-[11px] font-medium text-text-muted min-[400px]:inline">
               {studioCopy.eyebrow}
             </span>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <Link
               href="/"
               className="hidden min-h-11 items-center px-2 text-sm text-text-muted transition-opacity hover:opacity-70 sm:inline-flex"
             >
               {studioCopy.back}
             </Link>
-            <Button href="/#waitlist" className="px-4 py-2 text-sm">
+            <Button href="/#waitlist" className="px-3 py-2 text-sm sm:px-4">
               {studioCopy.waitlist}
             </Button>
           </div>
@@ -236,7 +236,7 @@ export function StudioApp() {
               {studioCopy.pipeline.heading}
             </p>
             <nav aria-label={studioCopy.pipeline.heading} className="mt-3">
-              <ol className="grid grid-cols-3 gap-2 lg:grid-cols-1 lg:gap-0">
+              <ol className="grid grid-cols-3 gap-1 lg:grid-cols-1 lg:gap-0">
                 {studioCopy.pipeline.steps.map((item) => {
                   const enabled =
                     item.id === "layout" ||
@@ -251,7 +251,7 @@ export function StudioApp() {
                         disabled={!enabled}
                         aria-current={current ? "step" : undefined}
                         onClick={() => goTo(item.id)}
-                        className="flex min-h-11 w-full items-center gap-3 rounded-[4px] px-2 py-2 text-left disabled:opacity-40"
+                        className="flex min-h-11 w-full flex-col items-center gap-1 rounded-[4px] px-1 py-2 text-center disabled:opacity-40 lg:flex-row lg:items-center lg:gap-3 lg:px-2 lg:text-left"
                       >
                         <span className="font-mono text-[11px] text-text-faint">{item.number}</span>
                         <span
@@ -552,7 +552,7 @@ function UploadStage({
             const next = event.dataTransfer.files[0];
             if (next) onFile(next);
           }}
-          className={`studio-drop flex min-h-[22rem] cursor-pointer flex-col items-center justify-center border border-dashed px-6 text-center transition-colors ${
+          className={`studio-drop flex min-h-[16rem] cursor-pointer flex-col items-center justify-center border border-dashed px-4 text-center transition-colors sm:min-h-[22rem] sm:px-6 ${
             dragOver ? "border-bg-ink bg-bg-surface" : "border-border-subtle bg-bg-surface/70"
           }`}
         >
@@ -593,7 +593,7 @@ function LayoutPreview({
 }) {
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
+      <div className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-faint">
             {studioCopy.upload.heading}
@@ -601,15 +601,15 @@ function LayoutPreview({
           <p className="mt-1 text-sm font-medium">{file.name}</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="secondary" className="px-3 py-2 text-sm" onClick={onChange}>
+          <Button variant="secondary" className="flex-1 px-3 py-2 text-sm sm:flex-none" onClick={onChange}>
             {studioCopy.upload.replace}
           </Button>
-          <Button variant="secondary" className="px-3 py-2 text-sm" onClick={onRemove}>
+          <Button variant="secondary" className="flex-1 px-3 py-2 text-sm sm:flex-none" onClick={onRemove}>
             {studioCopy.upload.remove}
           </Button>
         </div>
       </div>
-      <div className="studio-canvas flex min-h-[24rem] flex-1 items-center justify-center p-6">
+      <div className="studio-canvas flex min-h-[16rem] flex-1 items-center justify-center p-4 sm:min-h-[24rem] sm:p-6">
         {file.previewUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

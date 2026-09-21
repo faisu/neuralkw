@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/seo";
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-bg-ink text-[#f8f9fb]">
-      <div className="mx-auto max-w-[1360px] px-6 py-16 md:px-10">
+      <div className="mx-auto max-w-[1360px] px-4 py-12 sm:px-6 sm:py-16 md:px-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Logo variant="header" className="text-[#f8f9fb]" />

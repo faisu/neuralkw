@@ -48,7 +48,7 @@ export function ModelViewer({ projectName, floorHeight, unit }: ModelViewerProps
   }
 
   return (
-    <div className="flex h-full min-h-[28rem] flex-col">
+    <div className="flex h-full min-h-[20rem] flex-col sm:min-h-[28rem]">
       <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-text-faint">
@@ -56,7 +56,7 @@ export function ModelViewer({ projectName, floorHeight, unit }: ModelViewerProps
           </p>
           <p className="mt-1 text-sm font-medium tracking-[-0.02em]">{projectName}</p>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center justify-end gap-1">
           <ViewerButton
             label={studioCopy.viewer.rotateLeft}
             onClick={() => setRotation((value) => value - 18)}
@@ -87,7 +87,7 @@ export function ModelViewer({ projectName, floorHeight, unit }: ModelViewerProps
         </div>
       </div>
 
-      <div className="relative min-h-[24rem] flex-1 overflow-hidden">
+      <div className="relative min-h-[16rem] flex-1 overflow-hidden sm:min-h-[24rem]">
         <div
           className="studio-canvas absolute inset-0 cursor-grab touch-none select-none active:cursor-grabbing"
           onPointerDown={onPointerDown}

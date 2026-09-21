@@ -110,7 +110,7 @@ function UploadConvertCanvas({
 
   return (
     <div
-      className="absolute inset-0 flex items-center justify-center p-5 sm:p-10"
+      className="absolute inset-0 flex items-center justify-center p-3 sm:p-10"
       style={{ opacity: 1 - planOut }}
     >
       <div

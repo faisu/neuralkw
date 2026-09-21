@@ -28,8 +28,8 @@ export default function HomePage() {
       <CreateStory />
 
       <section id="product" className="scroll-mt-20 border-t border-border-subtle">
-        <div className="mx-auto max-w-[1200px] px-6 py-12 md:px-10 md:py-16">
-          <h2 className="max-w-3xl text-3xl font-normal tracking-[-0.04em] text-text-primary md:text-[2.45rem] md:leading-[1.15]">
+        <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 sm:py-12 md:px-10 md:py-16">
+          <h2 className="max-w-3xl text-[1.85rem] font-normal tracking-[-0.04em] text-text-primary sm:text-3xl md:text-[2.45rem] md:leading-[1.15]">
             {homeCopy.product.heading}
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted md:text-[17px]">

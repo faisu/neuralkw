@@ -19,7 +19,7 @@ export function CapabilityStory() {
         inverted ? "bg-bg-ink text-[#f8f9fb]" : "bg-bg-primary text-text-primary"
       }`}
     >
-      <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-8 px-4 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-16">
         <div>
           <h2 className={`text-[15px] font-normal ${inverted ? "text-white/40" : "text-text-faint"}`}>
             {capabilities.heading}
@@ -33,7 +33,7 @@ export function CapabilityStory() {
                   type="button"
                   role="tab"
                   aria-selected={selected}
-                  className={`rounded-[4px] border bg-transparent px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`rounded-[4px] border bg-transparent px-3 py-2 text-sm font-medium transition-colors ${
                     selected
                       ? inverted
                         ? "border-white/80 text-[#f8f9fb]"
@@ -59,7 +59,7 @@ export function CapabilityStory() {
                 <li key={entry.title}>
                   <button
                     type="button"
-                    className={`block w-full py-1.5 text-left text-[2rem] leading-[1.12] tracking-[-0.04em] transition-colors md:text-[2.35rem] ${
+                    className={`block min-h-11 w-full py-2 text-left text-[1.55rem] leading-[1.15] tracking-[-0.04em] transition-colors sm:text-[2rem] md:text-[2.35rem] ${
                       active
                         ? inverted
                           ? "text-[#f8f9fb]"

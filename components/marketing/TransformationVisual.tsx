@@ -144,8 +144,8 @@ export function WorkspaceMock({ kind = "plan" }: { kind?: VisualKind }) {
 
   return (
     <div className="overflow-hidden rounded-lg border border-border-subtle bg-[#e8edf2] shadow-[0_24px_60px_rgba(8,9,11,0.08)]">
-      <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] bg-[#f8f9fb]">
-        <aside className="border-r border-border-subtle p-3">
+      <div className="grid grid-cols-1 bg-[#f8f9fb] sm:grid-cols-[7.5rem_minmax(0,1fr)]">
+        <aside className="hidden border-r border-border-subtle p-3 sm:block">
           <div className="h-2 w-16 rounded-full bg-bg-ink/70" />
           <div className="mt-4 space-y-2">
             <div className="h-1.5 w-12 rounded-full bg-black/10" />

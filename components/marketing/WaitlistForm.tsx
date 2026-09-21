@@ -72,7 +72,7 @@ export function WaitlistForm() {
           {state.message}
         </p>
       ) : null}
-      <Button type="submit" busy={pending} className="w-fit min-w-40">
+      <Button type="submit" busy={pending} className="w-full min-w-40 sm:w-fit">
         {pending ? waitlist.pending : waitlist.submit}
       </Button>
       <p className="text-sm text-text-faint">{waitlist.supporting}</p>
